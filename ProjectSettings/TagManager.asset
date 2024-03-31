@@ -24,6 +24,24 @@ TagManager:
   - sugar
   - coffee
   - flask1
+  - sugarParent
+  - mug
+  - coffeeParent
+  - fillUp
+  - fillUp1
+  - fillUp2
+  - fillUp3
+  - fillUp4
+  - fillUp5
+  - water
+  - dupedWater
+  - fillUp6
+  - fillUp7
+  - fillUp8
+  - fillUp9
+  - sphere1
+  - sphere2
+  - molecule
   layers:
   - Default
   - TransparentFX
