@@ -24,6 +24,32 @@ TagManager:
   - sugar
   - coffee
   - flask1
+  - lighter
+  - matchstick
+  - matchbox
+  - table
+  - vrRobot
+  - grab
+  - burner
+  - gas
+  - hoseEnd1
+  - hoseEnd2
+  - mixingBeaker
+  - waterL
+  - iodineL
+  - aluminumL
+  - hoseNozzle
+  - fireinLhand
+  - fireinRhand
+  - RightHandBubble
+  - LeftHandBubble
+  - lighterFire
+  - iodineBeaker
+  - aluminumBeaker
+  - mixingBeakerPourArea
+  - StirrRod
+  - mixingArea
+  - Pipette
   layers:
   - Default
   - TransparentFX
@@ -35,12 +61,12 @@ TagManager:
   - Hands
   - Interactor
   - subtitle
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Grab
+  - Burner
+  - Gas
+  - Hose
+  - HoseValve1
+  - HoseValve2
   - 
   - 
   - 
