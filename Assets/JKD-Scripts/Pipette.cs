@@ -56,6 +56,8 @@ public class Pipette : MonoBehaviour
         {
             alreadyGetDropWater = true;
             waterDrop.SetActive(true);
+            GameMngr.S2currentsteps = 4;
+            vrRobot.currentStepExecuted2 = false;
             Debug.Log("Ready to drop!");
         }
 

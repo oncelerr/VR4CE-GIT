@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class mixingBeakerContent : MonoBehaviour
 {
+    public ParticleSystem mixingBeakerContPour;
     public GameObject mixingBeakerContentObj;
     public GameObject aluminumContent;
     public static float iodineValue = 0f;
@@ -13,15 +14,32 @@ public class mixingBeakerContent : MonoBehaviour
     public static bool iodineTransferSuccess;
     public static bool aluminumTransferSuccess;
 
+    // Variable for checking if the mixing beaker is spilling
+    public static bool isMixingBeakerCurrentlySpilling;
+
     private void Start() 
     {
         iodineTransferSuccess = false;
         aluminumTransferSuccess = false;
+        isMixingBeakerCurrentlySpilling = false;
     }
     private void Update()
     {
         FillBeaker(iodineValue, mixingBeakerContentObj, mixingBeaker.isItHoldingIodineBeaker);
         FillBeaker(aluminumValue, aluminumContent, mixingBeaker.isItHoldingAluminumBeaker);
+
+        //This check if the player spills the content of the mixing beaker
+        float angle = Vector3.Angle(Vector3.down, transform.forward);
+        if (angle <= -60f && (GameMngr.S2currentsteps == 1 || GameMngr.S2currentsteps == 2 || GameMngr.S2currentsteps == 3))
+        {
+            mixingBeakerContPour.Play();
+            isMixingBeakerCurrentlySpilling = true;
+        }
+        else
+        {
+            mixingBeakerContPour.Stop();
+            isMixingBeakerCurrentlySpilling = false;
+        }
     }
 
     public void FillBeaker(float Liquid, GameObject content, bool beakerHolding)

@@ -34,10 +34,10 @@ public class CheckpointID : MonoBehaviour
                 Checkpoint._CheckpointIndexSub5++;
             }
             Debug.Log("The check value of sub1 is: "+Checkpoint._CheckpointIndexSub1);
-            Debug.Log("The check value of sub1 is: "+Checkpoint._CheckpointIndexSub2);
-            Debug.Log("The check value of sub1 is: "+Checkpoint._CheckpointIndexSub3);
-            Debug.Log("The check value of sub1 is: "+Checkpoint._CheckpointIndexSub4);
-            Debug.Log("The check value of sub1 is: "+Checkpoint._CheckpointIndexSub5);
+            Debug.Log("The check value of sub2 is: "+Checkpoint._CheckpointIndexSub2);
+            Debug.Log("The check value of sub3 is: "+Checkpoint._CheckpointIndexSub3);
+            Debug.Log("The check value of sub4 is: "+Checkpoint._CheckpointIndexSub4);
+            Debug.Log("The check value of sub5 is: "+Checkpoint._CheckpointIndexSub5);
         }
     }
     private void HideCheckpoint()

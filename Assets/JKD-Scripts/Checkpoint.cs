@@ -8,9 +8,9 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] GameObject[] CPointGO;
     public static int _CheckpointIndexSub1 = 1; //There are 1 checkpoint in sublevel 1
     public static int _CheckpointIndexSub2 = 2; //There are 2 checkpoint in sublevel 2
-    public static int _CheckpointIndexSub3 = 1; //There are # checkpoint in sublevel 3
-    public static int _CheckpointIndexSub4 = 1; //There are # checkpoint in sublevel 4
-    public static int _CheckpointIndexSub5 = 1; //There are # checkpoint in sublevel 5
+    public static int _CheckpointIndexSub3 = 4; //There are 1 checkpoint in sublevel 3
+    public static int _CheckpointIndexSub4 = 5; //There are 2 checkpoint in sublevel 4
+    public static int _CheckpointIndexSub5 = 7; //There are 1 checkpoint in sublevel 5
 
     public void ShowCheckpoint(int CP)
     {

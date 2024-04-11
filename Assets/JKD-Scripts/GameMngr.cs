@@ -61,6 +61,15 @@ public class GameMngr : MonoBehaviour
     private bool lab1ReachTable;
     private bool lab2Reach;
     private bool lab2ReachTable;
+    private bool lab2Reach2Table2;
+    private bool lab2ReachTable2;
+    private bool mainlab2ReachTable2;
+    private bool mainlabReachTable;
+
+
+    // 
+    public static bool S2SpilledChemPowder;
+
 
 
     private void Awake() 
@@ -78,6 +87,7 @@ public class GameMngr : MonoBehaviour
             Debug.LogError("_doorTrigger script is not reference!");
         }
     }
+    
     private void Start() 
     {   
         // Reset Variables
@@ -87,6 +97,11 @@ public class GameMngr : MonoBehaviour
         lab2Reach = false;
         ppeRoomDone = false;
         lab2ReachTable = false;
+        lab2Reach2Table2 = false;
+        lab2ReachTable2 = false;
+        mainlab2ReachTable2 = false;
+        S2SpilledChemPowder = false;
+        mainlabReachTable = false;
 
         // Reference the updated level from the database to static variable
         _DataMngr.LoadMyData();
@@ -112,16 +127,19 @@ public class GameMngr : MonoBehaviour
         {
             Debug.Log("LEVEL 3");
             EnableDisableGameObjects(_DataMngr.player.LevelIndex, _LabMaterials);
+            _vrRobot.p7();
         }
         else if(_DataMngr.player.LevelIndex == 4) 
         {
             Debug.Log("LEVEL 4");
             EnableDisableGameObjects(_DataMngr.player.LevelIndex, _LabMaterials);
+            _vrRobot.p10();
         }
         else if(_DataMngr.player.LevelIndex == 5) 
         {
             Debug.Log("LEVEL 5");
             EnableDisableGameObjects(_DataMngr.player.LevelIndex, _LabMaterials);
+            _vrRobot.p13();
         }
     }
 
@@ -144,41 +162,119 @@ public class GameMngr : MonoBehaviour
                 _doorAnimation.OpenDoor();
                 _vrRobot.p5();
             }
+            else if(_DataMngr.player.LevelIndex == 3)
+            {
+                ppeRoomDone = true;
+                _doorTrigger.enabled = true;
+                _doorAnimation.OpenDoor();
+                _vrRobot.p8();
+            }
+            else if(_DataMngr.player.LevelIndex == 4)
+            {
+                ppeRoomDone = true;
+                _doorTrigger.enabled = true;
+                _doorAnimation.OpenDoor();
+                _vrRobot.p11();
+            }
+            else if(_DataMngr.player.LevelIndex == 5)
+            {
+                ppeRoomDone = true;
+                _doorTrigger.enabled = true;
+                _doorAnimation.OpenDoor();
+                _vrRobot.p14();
+            }
         }
 
+        // CHECKPOINTS
         // Check if the player reach the table sub1
-        if(CurrentLevelIndex == 1 && Checkpoint._CheckpointIndexSub1 == 2 && !lab1ReachTable)
+        if(CurrentLevelIndex == 1 && Checkpoint._CheckpointIndexSub1 == 2 && !lab1ReachTable)  // SUB 1
         {
             lab1ReachTable = true;
             _vrRobot.p3();
         }
 
         // Check if the player reach the lab 2 sub2
-        if(CurrentLevelIndex == 2 && Checkpoint._CheckpointIndexSub2 == 3 && !lab2Reach)
+        if(CurrentLevelIndex == 2 && Checkpoint._CheckpointIndexSub2 == 3 && !lab2Reach)  //SUB2
         {
             lab2Reach = true;
             _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub2);
         }
 
         // Check if the player reach the lab 2 sub2 and already near the table
-        if(CurrentLevelIndex == 2 && Checkpoint._CheckpointIndexSub2 == 4 && !lab2ReachTable)
+        if(CurrentLevelIndex == 2 && Checkpoint._CheckpointIndexSub2 == 4 && !lab2ReachTable)  //SUB2
         {
             lab2ReachTable = true;
             _vrRobot.p6();
         }
 
-        // Equate static to parameter variables
+        // Check if the player reach the main lab sub3 and already near the table
+        if(CurrentLevelIndex == 3 && Checkpoint._CheckpointIndexSub3 == 5 && !mainlabReachTable)  //SUB3
+        {
+            mainlabReachTable = true;
+            _vrRobot.p9();
+        }
 
+        // Check if the player reach the main lab sub4 and already near the table
+        if(CurrentLevelIndex == 4 && Checkpoint._CheckpointIndexSub4 == 6 && !lab2Reach2Table2)  //SUB4
+        {
+            lab2Reach2Table2 = true;
+            _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub4);
+        }
+
+        // Check if the player reach the main lab sub4 and already near the table
+        if(CurrentLevelIndex == 4 && Checkpoint._CheckpointIndexSub4 == 7 && !lab2ReachTable2)  //SUB4
+        {
+            lab2ReachTable2 = true;
+            _vrRobot.p12();
+        }
+
+        // Check if the player reach the main lab sub4 and already near the table
+        if(CurrentLevelIndex == 5 && Checkpoint._CheckpointIndexSub5 == 8 && !mainlab2ReachTable2)  //SUB5
+        {
+            mainlab2ReachTable2 = true;
+            _vrRobot.p15();
+        }
     }
 
     public void ProceedToNextLevel()
     {
-        _ScoreMngr.ScoreMenuObj.SetActive(false);
-        _DataMngr.player.LevelIndex = 2;
-        _DataMngr.SaveMyData();
-        // _SceneLoader.RestartScene();
-        _SceneLoader.LoadScene(3);
+        if(CurrentLevelIndex == 1) // if current level is 1, load level 2
+        {
+            _ScoreMngr.ScoreMenuObj.SetActive(false);
+            _DataMngr.player.LevelIndex = 2; // this change every succeeding level
+            _DataMngr.SaveMyData(); // saving the progress
+            _SceneLoader.LoadScene(3);  //NOTE: this is constant, because we are using the same scene. THis will change if the player reach level 5 because he/she will be redirect to main menu.
+        }
+        if(CurrentLevelIndex == 2) // if current level is 2, load level 3
+        {
+            _ScoreMngr.ScoreMenuObj.SetActive(false);
+            _DataMngr.player.LevelIndex = 3;  // this change every succeeding level
+            _DataMngr.SaveMyData(); // saving the progress
+            _SceneLoader.LoadScene(3); //NOTE: this is constant
+        }
+        if(CurrentLevelIndex == 3) // if current level is 3, load level 4
+        {
+            _ScoreMngr.ScoreMenuObj.SetActive(false);
+            _DataMngr.player.LevelIndex = 4;  // this change every succeeding level
+            _DataMngr.SaveMyData(); // saving the progress
+            _SceneLoader.LoadScene(3); //NOTE: this is constant
+        }
+        if(CurrentLevelIndex == 4) // if current level is 4, load level 5
+        {
+            _ScoreMngr.ScoreMenuObj.SetActive(false);
+            _DataMngr.player.LevelIndex = 5;  // this change every succeeding level
+            _DataMngr.SaveMyData(); // saving the progress
+            _SceneLoader.LoadScene(3); //NOTE: this is constant
+        }
+        if(CurrentLevelIndex == 5) // if current level is 5, load Main menu
+        {
+            _ScoreMngr.ScoreMenuObj.SetActive(false);
+            _DataMngr.player.LevelIndex = 5;  // Change this if you have save load system, if you want the player to select which level he/she will play
+            _DataMngr.SaveMyData(); // saving the progress
+            _SceneLoader.LoadScene(0); // this will load the main menu 
+        }
     }
+    
     public void ResetLvl(int level)
     {
         switch (level)

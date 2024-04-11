@@ -99,6 +99,7 @@ public class Iodine : MonoBehaviour
         {
             // Transfer Success
             success = true;
+            GameMngr.S2currentsteps = 1;
             mixingBeakerContent.iodineTransferSuccess = true;
             Debug.Log("Iodine transfer success");
         }
@@ -107,6 +108,7 @@ public class Iodine : MonoBehaviour
             // Iodine liquid wasted
             wasted = true;
             Debug.Log("Iodine powder wasted.");
+            GameMngr.S2SpilledChemPowder = true; // trigger if the player spilled a powder
             mixingBeakerContent.iodineTransferSuccess = false;
         }
     }

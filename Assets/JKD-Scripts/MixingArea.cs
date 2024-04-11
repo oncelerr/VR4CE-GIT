@@ -177,7 +177,8 @@ public class MixingArea : MonoBehaviour
             {
                 // Finish
                 isMixingDone = true;
-                // ChangeMaterialofPowder(_FinalPhaseMat);
+                GameMngr.S2currentsteps = 3;
+                vrRobot.currentStepExecuted2 = false;
                 StopCountdown();
                 Debug.Log("Mixing is done.");
                 EnableDisablePhases(3); //4th phase

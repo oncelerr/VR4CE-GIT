@@ -109,6 +109,8 @@ public class aluminum : MonoBehaviour
         {
             // Transfer success
             success = true;
+            GameMngr.S2currentsteps = 2;
+            vrRobot.currentStepExecuted2 = false;
             mixingBeakerContent.aluminumTransferSuccess = true;
             Debug.Log("Aluminum transfer success");
         }
@@ -118,6 +120,7 @@ public class aluminum : MonoBehaviour
             wasted = true;
             mixingBeakerContent.aluminumTransferSuccess = false;
             Debug.Log("Aluminum powder wasted.");
+            GameMngr.S2SpilledChemPowder = true; // trigger if the player spilled a powder
         } 
     }
 }

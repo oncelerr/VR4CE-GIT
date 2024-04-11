@@ -27,6 +27,8 @@ public class mixingBeakerDipArea : MonoBehaviour
             if(MixingArea.isMixingDone)
             {
                 pippetteWaterDrop = true;
+                GameMngr.S2currentsteps = 5;
+                vrRobot.currentStepExecuted2 = false;
             }
         }
     }

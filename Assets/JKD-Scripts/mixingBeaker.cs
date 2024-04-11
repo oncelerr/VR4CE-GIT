@@ -6,6 +6,9 @@ public class mixingBeaker : MonoBehaviour
 {
     // Scripts
     [SerializeField] mixingBeakerContent _mixingBeakerContent;
+    [SerializeField] AudioMngr _AudioMngr;
+
+
     // Particle FX
     public ParticleSystem SmokeWhite;
     public ParticleSystem SmokeBlack;
@@ -58,6 +61,7 @@ public class mixingBeaker : MonoBehaviour
         Phase6Done = false;
         Phase7Done = false;
     }
+    
     private void Update() 
     {
         FollowObject(mixingBeakerT, mixingBeakerPourAreaT);
@@ -190,6 +194,7 @@ public class mixingBeaker : MonoBehaviour
                 SmokeOrangePurpleWhite.Stop();
                 S2Fire.Stop();
                 Debug.Log("White smoke started");
+                _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[0]);  // hmm look at that smoke
             }
             else if(ReactionTime >= 10.1f && ReactionTime <=14f && !Phase3Done) // 3rd Phase
             {
@@ -217,6 +222,7 @@ public class mixingBeaker : MonoBehaviour
                 SmokeOrangePurpleWhite.Stop();
                 S2Fire.Stop();
                 Debug.Log("Black and purple smoke started");
+                _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[1]);  // woah look at that purple smoke
             }
             else if(ReactionTime >= 18.1f && ReactionTime <=25f && !Phase5Done) // 5th Phase
             {
@@ -243,6 +249,7 @@ public class mixingBeaker : MonoBehaviour
                 // Decrease amount of black content
                 _mixingBeakerContent.FillBeaker(0.25f, mBeakerBlackCont, true);
                 Debug.Log("Purple smoke and fire started");
+                _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[2]);  // wow isn`t it beautiful?
             }
             
             else if(ReactionTime >= 50.1f && ReactionTime <=59f && !Phase7Done) // 7th Phase, decrease the lifetime
@@ -251,24 +258,6 @@ public class mixingBeaker : MonoBehaviour
                 // Purple smoke and fire started to decrease lifetime
                 S2Fire.Play();
 
-                // First try
-                // Calculate the new start lifetime based on the timer progress
-                // float progress = (ReactionTime - 50.1f) / (59f - 50.1f);
-                // float newLifetime = Mathf.Lerp(S2FireStartLiftime, S2FireFinalLiftime, progress);
-
-                // // Update the particle system's start lifetime
-                // var mainModule = S2Fire.main;
-                // mainModule.startLifetime = new ParticleSystem.MinMaxCurve(newLifetime);
-
-                // // Stop other fx
-                // SmokeOrangePurpleWhite.Stop();
-                // SmokeBlackPurple.Stop();
-                // SmokeBlack.Stop();
-                // SmokeWhite.Stop();
-                // _mixingBeakerContent.FillBeaker(0.12f, mBeakerBlackCont, true);
-
-
-                // 2nd Try
                 // Get the current main module of the particle system
                 var mainModule = S2Fire.main;
 
@@ -287,6 +276,8 @@ public class mixingBeaker : MonoBehaviour
                 SmokeBlack.Stop();
                 SmokeWhite.Stop();
                 Debug.Log("All particle fx stopped");
+                GameMngr.S2currentsteps = 6;
+                vrRobot.currentStepExecuted2 = false;
             }
         }
     }
