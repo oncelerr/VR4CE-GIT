@@ -205,7 +205,7 @@ Material:
     - _Cull: 0
     - _CullMode: 0
     - _CullModeForward: 0
-    - _Cutoff: 0.75
+    - _Cutoff: 0.62
     - _DepthOffsetEnable: 0
     - _DetailAlbedoScale: 1
     - _DetailNormalScale: 1

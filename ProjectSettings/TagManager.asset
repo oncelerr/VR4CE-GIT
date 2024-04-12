@@ -50,6 +50,7 @@ TagManager:
   - StirrRod
   - mixingArea
   - Pipette
+  - testtube
   layers:
   - Default
   - TransparentFX
@@ -67,7 +68,7 @@ TagManager:
   - Hose
   - HoseValve1
   - HoseValve2
-  - 
+  - TestTube
   - 
   - 
   - 
