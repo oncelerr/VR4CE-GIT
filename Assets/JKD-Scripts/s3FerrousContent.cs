@@ -8,6 +8,7 @@ public class s3FerrousContent : MonoBehaviour
     ParticleSystem ferrousSulfatePour;
     // ferroues content value
     public static float ferrousSulfateAmount = 0.30f;
+    public float MyAngle;
     private bool success = false;
     private bool wasted = false;
     private Material material;
@@ -21,9 +22,13 @@ public class s3FerrousContent : MonoBehaviour
     void Update()
     {
         float angle = Vector3.Angle(Vector3.down, transform.forward);
-        if (angle <= 60f)
+        if (angle <= MyAngle)
         {
             ferrousSulfatePour.Play();
+        }
+        else if(s3TestTubeContent.s3testtubeAmount == 0.5f)
+        {
+            ferrousSulfatePour.Stop();
         }
         else
         {
@@ -37,16 +42,16 @@ public class s3FerrousContent : MonoBehaviour
         {
             // Debug.Log("Colliding with mixing beaker");
             // Check niya if the empty beaker ay nareach na yung amount of the ferrous
-            if(s3TestTubeContent.s3testtubeAmount < 0.26f)
+            if(s3TestTubeContent.s3testtubeAmount < 0.51f) // Set the threshold 
             {
                 // Dito iicrement niya yung value nung sa empty beaker para kunwari nafifill yung beaker
                 s3TestTubeContent.s3testtubeAmount += 0.01f;
-                ferrousSulfateAmount -= 0.01f;
+                // ferrousSulfateAmount -= 0.01f;
             }
         }
         else if(ferrousSulfateAmount > 0)
         {
-            ferrousSulfateAmount -= 0.01f;
+            // ferrousSulfateAmount -= 0.01f;
         }
     }
     private void UpdateFerrousContent() 

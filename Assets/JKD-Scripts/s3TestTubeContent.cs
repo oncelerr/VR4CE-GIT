@@ -5,14 +5,25 @@ using UnityEngine;
 public class s3TestTubeContent : MonoBehaviour
 {
     public GameObject[] testtubeObj;
-    public static float s3testtubeAmount = 0.30f;
+    public static float s3testtubeAmount;
     private bool success = false;
-    private bool wasted = false;
-    private Material material;
-    private int whichtestubeisHolding; // 
+    private int whichtestubeisHolding; // variable for checking if the player holds the tube
 
+
+    // Ferrous transfer success variables
+    public static bool FerrousTransferSuccess;
+
+    private void Start() 
+    {
+        // Initialize variables
+        success = false;
+        s3testtubeAmount = 0f;
+    }
     void Update()
     {
+        CheckFerrousTransferStatus();
+
+        // Check what test tube is holding
         if(whichtestubeisHolding == 1)
         {
             UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
@@ -37,7 +48,7 @@ public class s3TestTubeContent : MonoBehaviour
         if(GameMngr.CurrentLevelIndex == 3)
         {
             
-            // Debug.Log("Iodine in the IB: " +IodineAmount);
+            // Debug.Log("Iodine in the IB: " +s3testtubeAmount);
             // Debug.Log("Iodine in the EB: " +mixingBeakerContent.iodineValue);
             
             // Get the Renderer component of the GameObject
@@ -86,6 +97,16 @@ public class s3TestTubeContent : MonoBehaviour
         else if(tube == 4)
         {
             whichtestubeisHolding = tube;
+        }
+    }
+
+    private void CheckFerrousTransferStatus()  //THis checks if the ferrous liquid is transfered succesfully
+    {
+        if(s3testtubeAmount >= 0.5f && !success)
+        {
+            success = true;
+            FerrousTransferSuccess = true;
+            Debug.Log("Ferrous sulfate transfer success!");
         }
     }
 }
