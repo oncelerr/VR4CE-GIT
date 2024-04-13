@@ -7,8 +7,8 @@ public class s3TestTubeContent : MonoBehaviour
     public GameObject[] testtubeObj;
     public static float s3testtubeAmount;
     private bool success = false;
-    private int whichtestubeisHolding; // variable for checking if the player holds the tube
-
+    private int whichtestubeisHolding = 0; // variable for checking if the player holds the tube
+    private bool alreadyChoseTestTube;
 
     // Ferrous transfer success variables
     public static bool FerrousTransferSuccess;
@@ -18,26 +18,41 @@ public class s3TestTubeContent : MonoBehaviour
         // Initialize variables
         success = false;
         s3testtubeAmount = 0f;
+        alreadyChoseTestTube = false;
+        whichtestubeisHolding = 0;
     }
-    void Update()
+    private void Update()
     {
         CheckFerrousTransferStatus();
-
         // Check what test tube is holding
-        if(whichtestubeisHolding == 1)
+        Debug.Log("THe value of test tube tthat holds: " + whichtestubeisHolding);
+
+        if(whichtestubeisHolding == 1 && !alreadyChoseTestTube)
         {
+            alreadyChoseTestTube = true;
+            GameMngr.S3currentsteps = 1;
+            vrRobot.currentStepExecuted3 = false;
             UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
         }
-        else if(whichtestubeisHolding == 2)
+        else if(whichtestubeisHolding == 2 && !alreadyChoseTestTube)
         {
+            alreadyChoseTestTube = true;
+            GameMngr.S3currentsteps = 1;
+            vrRobot.currentStepExecuted3 = false;
             UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
         }
-        else if(whichtestubeisHolding == 3)
+        else if(whichtestubeisHolding == 3 && !alreadyChoseTestTube)
         {
+            alreadyChoseTestTube = true;
+            GameMngr.S3currentsteps = 1;
+            vrRobot.currentStepExecuted3 = false;
             UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
         }
-        else if(whichtestubeisHolding == 4)
+        else if(whichtestubeisHolding == 4 && !alreadyChoseTestTube)
         {
+            alreadyChoseTestTube = true;
+            GameMngr.S3currentsteps = 1;
+            vrRobot.currentStepExecuted3 = false;
             UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
         }
         
@@ -106,6 +121,8 @@ public class s3TestTubeContent : MonoBehaviour
         {
             success = true;
             FerrousTransferSuccess = true;
+            GameMngr.S3currentsteps = 2;
+            vrRobot.currentStepExecuted3 = false;
             Debug.Log("Ferrous sulfate transfer success!");
         }
     }

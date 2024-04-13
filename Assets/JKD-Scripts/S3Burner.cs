@@ -21,6 +21,9 @@ public class S3Burner : MonoBehaviour
             {
                 s3burnAlreadyIgnited = true;
                 s3Burner.Play();
+                GameMngr.S3currentsteps = 5;
+                vrRobot.currentStepExecuted3 = false;
+                Debug.Log("Burner is on.");
             }
         }
     }

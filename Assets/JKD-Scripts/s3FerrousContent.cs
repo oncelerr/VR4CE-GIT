@@ -5,12 +5,12 @@ using UnityEngine;
 public class s3FerrousContent : MonoBehaviour
 {
     public GameObject _FerrousContentObj;
-    ParticleSystem ferrousSulfatePour;
+    public ParticleSystem ferrousSulfatePour;
     // ferroues content value
     public static float ferrousSulfateAmount = 0.30f;
     public float MyAngle;
-    private bool success = false;
-    private bool wasted = false;
+    // private bool success = false;
+    // private bool wasted = false;
     private Material material;
     private bool isHoldingFerrousjar = false;
 
@@ -46,12 +46,12 @@ public class s3FerrousContent : MonoBehaviour
             {
                 // Dito iicrement niya yung value nung sa empty beaker para kunwari nafifill yung beaker
                 s3TestTubeContent.s3testtubeAmount += 0.01f;
-                // ferrousSulfateAmount -= 0.01f;
+                ferrousSulfateAmount -= 0.01f;
             }
         }
         else if(ferrousSulfateAmount > 0)
         {
-            // ferrousSulfateAmount -= 0.01f;
+            ferrousSulfateAmount -= 0.01f;
         }
     }
     private void UpdateFerrousContent() 

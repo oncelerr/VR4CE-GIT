@@ -731,7 +731,55 @@ public class vrRobot : MonoBehaviour
     
     public void Sub3ExperimentSteps()
     {
-        // 
+        if(GameMngr.CurrentLevelIndex == 3)
+        {
+            if(GameMngr.S3currentsteps == 1f && !currentStepExecuted3) //Step1
+            {
+                PlayScritStep3(14);
+            }
+
+            if(GameMngr.S3currentsteps == 2f && !currentStepExecuted3) //Step2
+            {
+                PlayScritStep3(15); 
+            } 
+
+            if(GameMngr.S3currentsteps == 3f && !currentStepExecuted3) //Step3
+            {
+                PlayScritStep3(16);
+            } 
+
+            if(GameMngr.S3currentsteps == 4f && !currentStepExecuted3) //Step4
+            {
+                PlayScritStep3(17);
+            }
+
+            if(GameMngr.S3currentsteps == 5f && !currentStepExecuted3) //Step5
+            {
+                PlayScritStep3(18);
+            }
+
+            if(GameMngr.S3currentsteps == 6f && !currentStepExecuted3) //Step6
+            {
+                GameMngr.S3currentsteps = 7f; // Change this
+                currentStepExecuted3 = true;  // Change this
+                GameMngr.alreadyReachLastStep = true;
+                UIMngr.currentProgress3 += 16.66f; //Change this
+                ScoreMngr.TotalScore = UIMngr.currentProgress3;  //Change this
+                Sequence step = DOTween.Sequence();
+                step.AppendCallback(() => PlayVRbotScript3(19)); // s19
+                step.AppendInterval(_AudioMngr.vrBotVoice3[19].length); // Delay
+                step.AppendCallback(() => PlayVRbotScript3(20)); // s20
+                step.AppendInterval(_AudioMngr.vrBotVoice3[20].length); // Delay
+                step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
+                step.Play(); 
+            }
+            if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
+            {
+                alreadyPlayedSpilledFunction = true;
+                _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
+                _ScoreMngr.CheckScore();
+            }
+        }
     }
     
     public void Sub4ExperimentSteps()
