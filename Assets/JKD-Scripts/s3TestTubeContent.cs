@@ -1,61 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class s3TestTubeContent : MonoBehaviour
 {
     public GameObject[] testtubeObj;
     public static float s3testtubeAmount;
-    private bool success = false;
-    private int whichtestubeisHolding = 0; // variable for checking if the player holds the tube
-    private bool alreadyChoseTestTube;
-
+    private bool success;
+    private bool step1Triggered;
+    public static int whichtestubeisHolding = 0; // variable for checking if the player holds the tube
+    public static bool testtubeHoldingByHuman;
     // Ferrous transfer success variables
     public static bool FerrousTransferSuccess;
 
-    private void Start() 
+    private void OnEnable() 
     {
         // Initialize variables
+        step1Triggered = false;
         success = false;
         s3testtubeAmount = 0f;
-        alreadyChoseTestTube = false;
         whichtestubeisHolding = 0;
     }
+    
     private void Update()
     {
         CheckFerrousTransferStatus();
-        // Check what test tube is holding
-        Debug.Log("THe value of test tube tthat holds: " + whichtestubeisHolding);
-
-        if(whichtestubeisHolding == 1 && !alreadyChoseTestTube)
-        {
-            alreadyChoseTestTube = true;
-            GameMngr.S3currentsteps = 1;
-            vrRobot.currentStepExecuted3 = false;
-            UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
-        }
-        else if(whichtestubeisHolding == 2 && !alreadyChoseTestTube)
-        {
-            alreadyChoseTestTube = true;
-            GameMngr.S3currentsteps = 1;
-            vrRobot.currentStepExecuted3 = false;
-            UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
-        }
-        else if(whichtestubeisHolding == 3 && !alreadyChoseTestTube)
-        {
-            alreadyChoseTestTube = true;
-            GameMngr.S3currentsteps = 1;
-            vrRobot.currentStepExecuted3 = false;
-            UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
-        }
-        else if(whichtestubeisHolding == 4 && !alreadyChoseTestTube)
-        {
-            alreadyChoseTestTube = true;
-            GameMngr.S3currentsteps = 1;
-            vrRobot.currentStepExecuted3 = false;
-            UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
-        }
-        
+        UpdateFerrousContent(testtubeObj[whichtestubeisHolding]);
     }
  
     private void UpdateFerrousContent(GameObject tube) 
@@ -88,6 +59,7 @@ public class s3TestTubeContent : MonoBehaviour
                 material.SetFloat("_Fill", fillValue);
 
                 // Debug.Log("Iodine Current Fill Value: " + fillValue);
+
             }
             else
             {
@@ -97,22 +69,59 @@ public class s3TestTubeContent : MonoBehaviour
     }
     public void WhichTestTube(int tube)
     {
-        if(tube == 1)
+        if(testtubeHoldingByHuman)
         {
-            whichtestubeisHolding = tube;
+            if(tube == 1) 
+            {
+                whichtestubeisHolding = tube;
+                if(!step1Triggered)
+                {   
+                    step1Triggered = true;
+                    GameMngr.S3currentsteps = 1;
+                    vrRobot.currentStepExecuted3 = false;
+                }
+                Debug.Log("Player chose test tube "+whichtestubeisHolding);
+            }
+            if(tube == 2) 
+            {
+                whichtestubeisHolding = tube;
+                if(!step1Triggered)
+                {   
+                    step1Triggered = true;
+                    GameMngr.S3currentsteps = 1;
+                    vrRobot.currentStepExecuted3 = false;
+                }
+                Debug.Log("Player chose test tube "+whichtestubeisHolding);
+            }
+            if(tube == 3) 
+            {
+                whichtestubeisHolding = tube;
+                if(!step1Triggered)
+                {   
+                    step1Triggered = true;
+                    GameMngr.S3currentsteps = 1;
+                    vrRobot.currentStepExecuted3 = false;
+                }
+                Debug.Log("Player chose test tube "+whichtestubeisHolding);
+            }
+            if(tube == 4) 
+            {
+                whichtestubeisHolding = tube;
+                if(!step1Triggered)
+                {   
+                    step1Triggered = true;
+                    GameMngr.S3currentsteps = 1;
+                    vrRobot.currentStepExecuted3 = false;
+                }
+                Debug.Log("Player chose test tube "+whichtestubeisHolding);
+            }
         }
-        else if(tube == 2)
+        else
         {
-            whichtestubeisHolding = tube;
+            whichtestubeisHolding = 0;
         }
-        else if(tube == 3)
-        {
-            whichtestubeisHolding = tube;
-        }
-        else if(tube == 4)
-        {
-            whichtestubeisHolding = tube;
-        }
+
+        
     }
 
     private void CheckFerrousTransferStatus()  //THis checks if the ferrous liquid is transfered succesfully

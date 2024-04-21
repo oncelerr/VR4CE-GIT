@@ -26,14 +26,16 @@ public class s3FerrousContent : MonoBehaviour
         {
             ferrousSulfatePour.Play();
         }
-        else if(s3TestTubeContent.s3testtubeAmount == 0.5f)
-        {
-            ferrousSulfatePour.Stop();
-        }
         else
         {
             ferrousSulfatePour.Stop();
         }
+        if(s3TestTubeContent.s3testtubeAmount >= 0.5f)
+        {
+            ferrousSulfatePour.Stop();
+            _FerrousContentObj.SetActive(false);
+        }
+        
         UpdateFerrousContent();
     }
     private void OnParticleCollision(GameObject other)

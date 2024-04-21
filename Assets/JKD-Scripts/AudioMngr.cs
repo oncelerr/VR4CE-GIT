@@ -16,6 +16,8 @@ public class AudioMngr : MonoBehaviour
     [Header("SFX")]
     public AudioClip whooseFire;
     public AudioClip lighterFX;
+    public AudioClip lighter2ONFX;
+    public AudioClip lighter2OFFFX;
     public AudioClip openDoorFX;
     public AudioClip closeDoorFX;
     public AudioClip checkpointFX;
@@ -45,13 +47,13 @@ public class AudioMngr : MonoBehaviour
     {
         subtitleSource.clip = audio;
         subtitleSource.Play();
-        // Debug.Log("Voice is played");
+        // Debug.Log("Voice is played"); 
     }
     public void StopSubtitleVoiceOver(AudioClip audio)
     {
         subtitleSource.clip = audio;
         subtitleSource.Stop();
-        // Debug.Log("Voice is played");
+        Debug.Log("Voice is stopped");
     }
 
     // Background Music
@@ -146,5 +148,18 @@ public class AudioMngr : MonoBehaviour
         subtitleSource.clip = audio;
         subtitleSource.Play();
         // Debug.Log("voice over is played");
+    }
+
+
+    public void Lighter2ON()
+    {
+        sfxSource.clip = lighter2ONFX;
+        sfxSource.Play();
+    }
+
+    public void Lighter2OFF()
+    {
+        sfxSource.clip = lighter2OFFFX;
+        sfxSource.Play();
     }
 }

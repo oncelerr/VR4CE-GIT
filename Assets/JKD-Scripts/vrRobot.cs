@@ -232,7 +232,7 @@ public class vrRobot : MonoBehaviour
 
     public void p7() //PPE Check sub3
     {
-        Sequence p7sequence = DOTween.Sequence();
+        Sequence p7sequence = DOTween.Sequence().SetId("p7");;
         p7sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Panel off
         p7sequence.AppendCallback(() => HoverVRbot(false));// Hover OFF   
         p7sequence.AppendInterval(1.7f);  // Delay
@@ -756,7 +756,7 @@ public class vrRobot : MonoBehaviour
             if(GameMngr.S3currentsteps == 5f && !currentStepExecuted3) //Step5
             {
                 PlayScritStep3(18);
-            }
+            } 
 
             if(GameMngr.S3currentsteps == 6f && !currentStepExecuted3) //Step6
             {
@@ -773,12 +773,12 @@ public class vrRobot : MonoBehaviour
                 step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
                 step.Play(); 
             }
-            if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
-            {
-                alreadyPlayedSpilledFunction = true;
-                _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
-                _ScoreMngr.CheckScore();
-            }
+            // if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
+            // {
+            //     alreadyPlayedSpilledFunction = true;
+            //     _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
+            //     _ScoreMngr.CheckScore();
+            // }
         }
     }
     

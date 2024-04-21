@@ -42,7 +42,7 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(false);
                 Stars[2].SetActive(false);
                 Stars[3].SetActive(false);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[3]);
+                ScoreVerdict(GameMngr.CurrentLevelIndex, 3);
             }
             else if(TotalScore >= 65 && TotalScore < 75) 
             {
@@ -55,7 +55,7 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(true);
                 Stars[2].SetActive(false);
                 Stars[3].SetActive(false);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[2]);
+                ScoreVerdict(GameMngr.CurrentLevelIndex, 2);
             }
             else if(TotalScore >+ 75 && TotalScore < 90) 
             {
@@ -68,7 +68,7 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(false);
                 Stars[2].SetActive(true);
                 Stars[3].SetActive(false);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[1]);
+                ScoreVerdict(GameMngr.CurrentLevelIndex, 1);
             }
             else if(TotalScore >= 90) 
             {
@@ -81,10 +81,10 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(false);
                 Stars[2].SetActive(false);
                 Stars[3].SetActive(true);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[0]);
+                ScoreVerdict(GameMngr.CurrentLevelIndex, 0);
             }
         }
-        // If curren level is 5 change button will be different
+        // If current level is 5 change button will be different
         else if(GameMngr.CurrentLevelIndex == 5)
         {
             if(TotalScore < 65) 
@@ -98,7 +98,7 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(false);
                 Stars[2].SetActive(false);
                 Stars[3].SetActive(false);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[3]);
+                ScoreVerdict(5, 3);
             }
             else if(TotalScore >= 65 && TotalScore < 75) 
             {
@@ -111,7 +111,7 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(true);
                 Stars[2].SetActive(false);
                 Stars[3].SetActive(false);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[2]);
+                ScoreVerdict(5, 2);
             }
             else if(TotalScore >+ 75 && TotalScore < 90) 
             {
@@ -124,7 +124,7 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(false);
                 Stars[2].SetActive(true);
                 Stars[3].SetActive(false);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[1]);
+                ScoreVerdict(5, 1);
             }
             else if(TotalScore >= 90) 
             {
@@ -137,8 +137,33 @@ public class ScoreMngr : MonoBehaviour
                 Stars[1].SetActive(false);
                 Stars[2].SetActive(false);
                 Stars[3].SetActive(true);
-                _AudioMngr.PlayPerformance(_AudioMngr.verdict[0]);
+                ScoreVerdict(5, 0);
             }
+        }
+    }
+
+    private void ScoreVerdict(int GameLevel, int verdict)
+    {
+        switch (GameLevel)
+        {
+            case 1:
+                _AudioMngr.PlayPerformance(_AudioMngr.verdict[verdict]);
+                break;
+            case 2:
+                _AudioMngr.PlayPerformance(_AudioMngr.verdict2[verdict]);
+                break;
+            case 3:
+                _AudioMngr.PlayPerformance(_AudioMngr.verdict3[verdict]);
+                break;
+            case 4:
+                _AudioMngr.PlayPerformance(_AudioMngr.verdict4[verdict]);
+                break;
+            case 5:
+                _AudioMngr.PlayPerformance(_AudioMngr.verdict5[verdict]);
+                break;
+            default:
+                Debug.Log("Undefined sublevel");
+                break;
         }
     }
 }

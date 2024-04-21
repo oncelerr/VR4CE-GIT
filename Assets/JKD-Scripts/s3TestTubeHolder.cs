@@ -13,17 +13,15 @@ public class s3TestTubeHolder : MonoBehaviour
     {
         _testtubeSnapperDone = false;
     }
-    private void OnTriggerEnter(Collider other) 
+    
+    public void TestTubeSetUp(bool state) 
     {
-        if(other.gameObject.CompareTag("testtube"))
+        if(state && !_testtubeSnapperDone)
         {
-            if(!_testtubeSnapperDone)
-            {
-                _testtubeSnapperDone = true;
-                GameMngr.S3currentsteps = 3;
-                vrRobot.currentStepExecuted3 = false;
-                Debug.Log("Test tube already set.");
-            }
+            _testtubeSnapperDone = true;
+            GameMngr.S3currentsteps = 3;
+            vrRobot.currentStepExecuted3 = false;
+            Debug.Log("Test tube already set.");
         }
     }
 }

@@ -6,21 +6,24 @@ using UnityEngine;
 public class S3Burner : MonoBehaviour
 {
     private bool s3burnAlreadyIgnited;
-    [SerializeField] ParticleSystem s3Burner;
+    public ParticleSystem s3BurnerFire;
+    public static float s3BurnerFireAmount;
 
     private void Start() 
     {
+        s3BurnerFireAmount = 0.4f;
         s3burnAlreadyIgnited = false;
-        s3Burner.Stop();
+        s3BurnerFire.Stop();
     }
+    
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.CompareTag("lighter"))
+        if(other.gameObject.CompareTag("lighterFire"))
         {
             if(!s3burnAlreadyIgnited)
             {
                 s3burnAlreadyIgnited = true;
-                s3Burner.Play();
+                s3BurnerFire.Play();
                 GameMngr.S3currentsteps = 5;
                 vrRobot.currentStepExecuted3 = false;
                 Debug.Log("Burner is on.");

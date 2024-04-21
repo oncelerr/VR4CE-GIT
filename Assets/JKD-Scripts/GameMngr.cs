@@ -167,6 +167,7 @@ public class GameMngr : MonoBehaviour
                 ppeRoomDone = true;
                 _doorTrigger.enabled = true;
                 _doorAnimation.OpenDoor();
+                DOTween.Pause("p7"); // Pause scripts 1-7 if player is already ppe ready
                 _vrRobot.p8();
             }
             else if(_DataMngr.player.LevelIndex == 4)
