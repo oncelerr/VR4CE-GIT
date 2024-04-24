@@ -6,6 +6,8 @@ public class rightPlateTrigger : MonoBehaviour
 {
     public triggerZoneManager triggerZoneManager;
 
+    int stepRight = 1;
+
     public float rightPlateWeight;
     private void OnTriggerEnter(Collider other)
     {
@@ -48,13 +50,13 @@ public class rightPlateTrigger : MonoBehaviour
             rightPlateWeight = rightPlateWeight + 13;
             triggerZoneManager.fourthQuestion();
         }
-        if (other.CompareTag("CO2_molecule"))
+        if (other.CompareTag("CO2_molecule1"))
         {
             rightPlateWeight = rightPlateWeight + 5;
             triggerZoneManager.fourthQuestion();
         }
         //fifth question
-        if (other.CompareTag("CO2_molecule"))
+        if (other.CompareTag("CO2_molecule2"))
         {
             rightPlateWeight = rightPlateWeight + 7;
             triggerZoneManager.fifthQuestion();
@@ -63,6 +65,17 @@ public class rightPlateTrigger : MonoBehaviour
         {
             rightPlateWeight = rightPlateWeight + 8;
             triggerZoneManager.fifthQuestion();
+        }
+        //sixth question
+        if (other.CompareTag("H2O_molecule1"))
+        {
+            rightPlateWeight = rightPlateWeight + 7;
+            triggerZoneManager.sixthQuestion();
+        }
+        if (other.CompareTag("CO2_molecule3"))
+        {
+            rightPlateWeight = rightPlateWeight + 7;
+            triggerZoneManager.sixthQuestion();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -106,13 +119,13 @@ public class rightPlateTrigger : MonoBehaviour
             rightPlateWeight = rightPlateWeight - 13;
             triggerZoneManager.fourthQuestion();
         }
-        if (other.CompareTag("CO2_molecule"))
+        if (other.CompareTag("CO2_molecule1"))
         {
             rightPlateWeight = rightPlateWeight - 5;
             triggerZoneManager.fourthQuestion();
         }
         //fifth question
-        if (other.CompareTag("CO2_molecule"))
+        if (other.CompareTag("CO2_molecule2"))
         {
             rightPlateWeight = rightPlateWeight - 7;
             triggerZoneManager.fifthQuestion();
@@ -121,6 +134,17 @@ public class rightPlateTrigger : MonoBehaviour
         {
             rightPlateWeight = rightPlateWeight - 8;
             triggerZoneManager.fifthQuestion();
+        }
+        //sixth question
+        if (other.CompareTag("H2O_molecule1"))
+        {
+            rightPlateWeight = rightPlateWeight - 7;
+            triggerZoneManager.sixthQuestion();
+        }
+        if (other.CompareTag("CO2_molecule3"))
+        {
+            rightPlateWeight = rightPlateWeight - 7;
+            triggerZoneManager.sixthQuestion();
         }
     }
 }

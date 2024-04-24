@@ -39,6 +39,8 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(10);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -64,11 +66,13 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
         }
-        if (rightPlateTriggerScript.rightPlateWeight == 16 && leftPlateTriggerScript.leftPlateWeight == 16)
+        if (rightPlateTriggerScript.rightPlateWeight == 8 && leftPlateTriggerScript.leftPlateWeight == 8)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(11);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -95,11 +99,13 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
         }
-        if (rightPlateTriggerScript.rightPlateWeight == 26 && leftPlateTriggerScript.leftPlateWeight == 26)
+        if (rightPlateTriggerScript.rightPlateWeight == 10 && leftPlateTriggerScript.leftPlateWeight == 10)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(12);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -126,11 +132,13 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
         }
-        if (rightPlateTriggerScript.rightPlateWeight == 44 && leftPlateTriggerScript.leftPlateWeight == 44)
+        if (rightPlateTriggerScript.rightPlateWeight == 36 && leftPlateTriggerScript.leftPlateWeight == 36)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(13);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -157,11 +165,45 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
         }
-        if (rightPlateTriggerScript.rightPlateWeight == 44 && leftPlateTriggerScript.leftPlateWeight == 44)
+        if (rightPlateTriggerScript.rightPlateWeight == 23 && leftPlateTriggerScript.leftPlateWeight == 23)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
-            playStepsScript.PlayStepIndex(13);
+            playStepsScript.PlayStepIndex(14);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
+        }
+
+        Debug.Log(rightPlateTriggerScript.rightPlateWeight);
+        Debug.Log(leftPlateTriggerScript.leftPlateWeight);
+    }
+    public void sixthQuestion()
+    {
+        GameObject sphere1 = GameObject.FindGameObjectWithTag("sphere1");
+        GameObject sphere2 = GameObject.FindGameObjectWithTag("sphere2");
+
+        if (rightPlateTriggerScript.rightPlateWeight == leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight < leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight == 28 && leftPlateTriggerScript.leftPlateWeight == 28)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+            playStepsScript.PlayStepIndex(15);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);

@@ -51,6 +51,59 @@ TagManager:
   - mixingArea
   - Pipette
   - testtube
+  - O2_molecule
+  - H2O_molecule
+  - N2_molecule
+  - water
+  - CO2_molecule
+  - fillUp4
+  - NH3_molecule
+  - NO_molecule
+  - fillUp2
+  - CH4_molecule
+  - C2H4_molecule
+  - fillUp1
+  - NO2_molecule
+  - SO2_molecule
+  - moleculeParent2
+  - O2_molecule1
+  - fillUp8
+  - fillUp6
+  - fillUp3
+  - H2_molecule
+  - sugarParent
+  - fillUp5
+  - C_molecule
+  - moleculeParent3
+  - CO_molecule
+  - mug
+  - moleculeParent1
+  - fillUp7
+  - CS2_molecule
+  - fillUp
+  - fillUp9
+  - sphere1
+  - sphere2
+  - coffeeParent
+  - C2H5OH_molecule
+  - C2H2_molecule
+  - CO2_molecule1
+  - O2_molecule2
+  - CO2_molecule2
+  - O2_molecule3
+  - CO2_molecule3
+  - H2O_molecule1
+  - O2_molecule4
+  - NO_molecule1
+  - H2O_molecule2
+  - NH3_molecule1
+  - O2_molecule5
+  - CO2_molecule4
+  - H2O_molecule3
+  - O2_molecule6
+  - CO2_molecule5
+  - H2O_molecule4
+  - dupedWater
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,8 @@ public class leftPlateTrigger : MonoBehaviour
 
     public triggerZoneManager triggerZoneManager;
 
+    int step = 1;
+
     private void OnTriggerEnter(Collider other)
     {
         //first question
@@ -45,10 +47,21 @@ public class leftPlateTrigger : MonoBehaviour
             leftPlateWeight = leftPlateWeight + 5;
             triggerZoneManager.fifthQuestion();
         }
-        if (other.CompareTag("O2_molecule"))
+        if (other.CompareTag("O2_molecule2"))
         {
             leftPlateWeight = leftPlateWeight + 6;
             triggerZoneManager.fifthQuestion();
+        }
+        //sixth question
+        if (other.CompareTag("C2H4_molecule"))
+        {
+            leftPlateWeight = leftPlateWeight + 10;
+            triggerZoneManager.sixthQuestion();
+        }
+        if (other.CompareTag("O2_molecule3"))
+        {
+            leftPlateWeight = leftPlateWeight + 6;
+            triggerZoneManager.sixthQuestion();
         }
     }
     private void OnTriggerExit(Collider other)
@@ -88,10 +101,21 @@ public class leftPlateTrigger : MonoBehaviour
             leftPlateWeight = leftPlateWeight - 5;
             triggerZoneManager.fifthQuestion();
         }
-        if (other.CompareTag("O2_molecule"))
+        if (other.CompareTag("O2_molecule2"))
         {
             leftPlateWeight = leftPlateWeight - 6;
             triggerZoneManager.fifthQuestion();
+        }
+        //sixth question
+        if (other.CompareTag("C2H4_molecule"))
+        {
+            leftPlateWeight = leftPlateWeight - 10;
+            triggerZoneManager.sixthQuestion();
+        }
+        if (other.CompareTag("O2_molecule3"))
+        {
+            leftPlateWeight = leftPlateWeight - 6;
+            triggerZoneManager.sixthQuestion();
         }
     }
 }
