@@ -103,6 +103,19 @@ TagManager:
   - O2_molecule6
   - CO2_molecule5
   - H2O_molecule4
+  - O2_molecule7
+  - NH3_molecule2
+  - H2O_molecule5
+  - NO_molecule2
+  - dupedWater
+  - O2_molecule8
+  - H2O_molecule6
+  - CO2_molecule6
+  - N2_molecule1
+  - H2O_molecule7
+  - NO_molecule3
+  - NH3_molecule3
+  - O2_molecule9
   layers:
   - Default
   - TransparentFX

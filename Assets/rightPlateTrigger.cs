@@ -77,6 +77,39 @@ public class rightPlateTrigger : MonoBehaviour
             rightPlateWeight = rightPlateWeight + 7;
             triggerZoneManager.sixthQuestion();
         }
+        //seventh question
+        if (other.CompareTag("H2O_molecule5"))
+        {
+            rightPlateWeight = rightPlateWeight + 7;
+            triggerZoneManager.seventhQuestion();
+        }
+        if (other.CompareTag("NO_molecule2"))
+        {
+            rightPlateWeight = rightPlateWeight + 4;
+            triggerZoneManager.seventhQuestion();
+        }
+        //eighth question
+        if (other.CompareTag("H2O_molecule6"))
+        {
+            rightPlateWeight = rightPlateWeight + 7;
+            triggerZoneManager.eighthQuestion();
+        }
+        if (other.CompareTag("CO2_molecule4"))
+        {
+            rightPlateWeight = rightPlateWeight + 7;
+            triggerZoneManager.eighthQuestion();
+        }
+        //ninth question
+        if (other.CompareTag("NO_molecule3"))
+        {
+            rightPlateWeight = rightPlateWeight + 4;
+            triggerZoneManager.ninthQuestion();
+        }
+        if (other.CompareTag("NH3_molecule3"))
+        {
+            rightPlateWeight = rightPlateWeight + 7;
+            triggerZoneManager.ninthQuestion();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -145,6 +178,39 @@ public class rightPlateTrigger : MonoBehaviour
         {
             rightPlateWeight = rightPlateWeight - 7;
             triggerZoneManager.sixthQuestion();
+        }
+        //seventh question
+        if (other.CompareTag("H2O_molecule5"))
+        {
+            rightPlateWeight = rightPlateWeight - 7;
+            triggerZoneManager.seventhQuestion();
+        }
+        if (other.CompareTag("NO_molecule2"))
+        {
+            rightPlateWeight = rightPlateWeight - 4;
+            triggerZoneManager.seventhQuestion();
+        }
+        //eighth question
+        if (other.CompareTag("H2O_molecule6"))
+        {
+            rightPlateWeight = rightPlateWeight - 7;
+            triggerZoneManager.eighthQuestion();
+        }
+        if (other.CompareTag("CO2_molecule4"))
+        {
+            rightPlateWeight = rightPlateWeight - 7;
+            triggerZoneManager.eighthQuestion();
+        }
+        //ninth question
+        if (other.CompareTag("NO_molecule3"))
+        {
+            rightPlateWeight = rightPlateWeight - 4;
+            triggerZoneManager.ninthQuestion();
+        }
+        if (other.CompareTag("NH3_molecule3"))
+        {
+            rightPlateWeight = rightPlateWeight - 7;
+            triggerZoneManager.ninthQuestion();
         }
     }
 }

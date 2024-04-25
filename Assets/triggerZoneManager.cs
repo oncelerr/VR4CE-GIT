@@ -209,7 +209,102 @@ public class triggerZoneManager : MonoBehaviour
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
         Debug.Log(leftPlateTriggerScript.leftPlateWeight);
     }
+    public void seventhQuestion()
+    {
+        GameObject sphere1 = GameObject.FindGameObjectWithTag("sphere1");
+        GameObject sphere2 = GameObject.FindGameObjectWithTag("sphere2");
 
+        if (rightPlateTriggerScript.rightPlateWeight == leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight < leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight == 58 && leftPlateTriggerScript.leftPlateWeight == 58)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+            playStepsScript.PlayStepIndex(16);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
+        }
+
+        Debug.Log(rightPlateTriggerScript.rightPlateWeight);
+        Debug.Log(leftPlateTriggerScript.leftPlateWeight);
+    }
+    public void eighthQuestion()
+    {
+        GameObject sphere1 = GameObject.FindGameObjectWithTag("sphere1");
+        GameObject sphere2 = GameObject.FindGameObjectWithTag("sphere2");
+
+        if (rightPlateTriggerScript.rightPlateWeight == leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight < leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight == 35 && leftPlateTriggerScript.leftPlateWeight == 35)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+            playStepsScript.PlayStepIndex(17);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
+        }
+
+        Debug.Log(rightPlateTriggerScript.rightPlateWeight);
+        Debug.Log(leftPlateTriggerScript.leftPlateWeight);
+    }
+    public void ninthQuestion()
+    {
+        GameObject sphere1 = GameObject.FindGameObjectWithTag("sphere1");
+        GameObject sphere2 = GameObject.FindGameObjectWithTag("sphere2");
+
+        if (rightPlateTriggerScript.rightPlateWeight == leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight < leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+        }
+        if (rightPlateTriggerScript.rightPlateWeight == 52 && leftPlateTriggerScript.leftPlateWeight == 52)
+        {
+            StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
+            StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
+            playStepsScript.PlayStepIndex(18);
+            rightPlateTriggerScript.rightPlateWeight = 0;
+            leftPlateTriggerScript.leftPlateWeight = 0;
+        }
+
+        Debug.Log(rightPlateTriggerScript.rightPlateWeight);
+        Debug.Log(leftPlateTriggerScript.leftPlateWeight);
+    }
     private IEnumerator MoveObjectSmoothly(GameObject obj, Vector3 startPosition, Vector3 targetPosition)
     {
         isMoving = true;
