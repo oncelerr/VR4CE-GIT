@@ -8,6 +8,7 @@ using DG.Tweening;
 public class s3TestTubeHolder : MonoBehaviour
 {
     private bool _testtubeSnapperDone;
+    public static int testtubeholderIndex;
 
     private void Start() 
     {
@@ -16,12 +17,12 @@ public class s3TestTubeHolder : MonoBehaviour
     
     public void TestTubeSetUp(bool state) 
     {
-        if(state && !_testtubeSnapperDone)
+        if(state && !_testtubeSnapperDone && GameMngr.S3currentsteps == 2)
         {
             _testtubeSnapperDone = true;
             GameMngr.S3currentsteps = 3;
             vrRobot.currentStepExecuted3 = false;
-            Debug.Log("Test tube already set.");
+            // Debug.Log("Test "+s3TestTubeContent.whichtestubeisHolding+" tube already set.");
         }
     }
 }
