@@ -10,6 +10,8 @@ public class PlaySteps : MonoBehaviour
 
     private PlayableDirector director;
 
+    public GameManager gamemanager;
+
     public List<Step> steps;
 
     
@@ -39,6 +41,9 @@ public class PlaySteps : MonoBehaviour
             director.Stop();
             director.time = step.time;
             director.Play();
+
+            gamemanager.IncrementUniversalScore();
+            Debug.Log(gamemanager.GetUniversalScore());
         }
     }
 }
