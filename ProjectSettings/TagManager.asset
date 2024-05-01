@@ -51,6 +51,15 @@ TagManager:
   - mixingArea
   - Pipette
   - testtube
+  - tube1
+  - tube2
+  - tube3
+  - tube4
+  - tube5
+  - tube6
+  - Magnesium
+  - Copper
+  - Zinc
   layers:
   - Default
   - TransparentFX

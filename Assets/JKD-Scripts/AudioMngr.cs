@@ -40,6 +40,7 @@ public class AudioMngr : MonoBehaviour
     // Chem reactions
     public AudioClip[] vrBotReactions; //S2
     public AudioClip[] vrBotReactions3; //S3
+    public AudioClip[] vrBotReactions4; //S4
     public AudioClip[] vrBotReactions5; //S5
     
 

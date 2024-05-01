@@ -108,7 +108,7 @@ public class vrRobot : MonoBehaviour
         p2sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p2sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p2sequence.AppendInterval(.3f); // Delay of .3s
-        p2sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p2sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p2sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p2sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p2sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
@@ -194,7 +194,7 @@ public class vrRobot : MonoBehaviour
         p5sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p5sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p5sequence.AppendInterval(.3f); // Delay of .3s
-        p5sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p5sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p5sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p5sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p5sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
@@ -285,7 +285,7 @@ public class vrRobot : MonoBehaviour
         p8sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p8sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p8sequence.AppendInterval(.3f); // Delay of .3s
-        p8sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p8sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p8sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p8sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p8sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
@@ -375,7 +375,7 @@ public class vrRobot : MonoBehaviour
         p11sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p11sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p11sequence.AppendInterval(.3f); // Delay of .3s
-        p11sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p11sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p11sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p11sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p11sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
@@ -469,7 +469,7 @@ public class vrRobot : MonoBehaviour
         p14sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p14sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p14sequence.AppendInterval(.3f); // Delay of .3s
-        p14sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p14sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p14sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p14sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p14sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
@@ -633,7 +633,7 @@ public class vrRobot : MonoBehaviour
         step.AppendCallback(() => PlayVRbotScript4(Scriptt)); // Change this
         step.AppendInterval(_AudioMngr.vrBotVoice4[Scriptt].length); // Change this
         step.Play(); 
-        UIMngr.currentProgress4 += 16.66f; // Change this
+        UIMngr.currentProgress4 += 14f; // Change this
     }
 
     public void PlayScritStep5(int Scriptt) // Change this
@@ -805,7 +805,69 @@ public class vrRobot : MonoBehaviour
     
     public void Sub4ExperimentSteps()
     {
-        // 
+        if(GameMngr.CurrentLevelIndex == 4)
+        {
+            if(GameMngr.S4currentsteps == 1f && !currentStepExecuted4) //Step1
+            {
+                PlayScritStep4(14);
+            }
+
+            if(GameMngr.S4currentsteps == 2f && !currentStepExecuted4) //Step2
+            {
+                PlayScritStep4(15); 
+            } 
+
+            if(GameMngr.S4currentsteps == 3f && !currentStepExecuted4) //Step3
+            {
+                PlayScritStep4(16);
+            } 
+
+            if(GameMngr.S4currentsteps == 4f && !currentStepExecuted4) //Step4
+            {
+                PlayScritStep4(17);
+            }
+
+            if(GameMngr.S4currentsteps == 5f && !currentStepExecuted4) //Step5
+            {
+                PlayScritStep4(18);
+            } 
+
+            if(GameMngr.S4currentsteps == 6f && !currentStepExecuted4) //Step5
+            {
+                PlayScritStep4(19);
+            } 
+            if(GameMngr.S4currentsteps == 7f && !currentStepExecuted4) //Step6
+            {
+                GameMngr.S4currentsteps = 8f; // Change this
+                currentStepExecuted4 = true;  // Change this
+                GameMngr.alreadyReachLastStep = true;
+                UIMngr.currentProgress4 += 16f; //Change this
+                ScoreMngr.TotalScore = UIMngr.currentProgress4;  //Change this
+                Sequence step = DOTween.Sequence();
+                step.AppendCallback(() => PlayVRbotScript4(20)); // s20
+                step.AppendInterval(_AudioMngr.vrBotVoice4[20].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[0])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[0].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[1])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[1].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[2])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[2].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[3])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[3].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[4])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[4].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[5])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[5].length); // Delay
+                step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
+                step.Play(); 
+            }
+            // if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
+            // {
+            //     alreadyPlayedSpilledFunction = true;
+            //     _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
+            //     _ScoreMngr.CheckScore();
+            // }
+        }
     }
     
     public void Sub5ExperimentSteps()
@@ -837,7 +899,7 @@ public class vrRobot : MonoBehaviour
                 GameMngr.S5currentsteps = 6f; // Change this
                 currentStepExecuted5 = true;  // Change this
                 GameMngr.alreadyReachLastStep = true;
-                UIMngr.currentProgress3 += 19.8f; //Change this
+                UIMngr.currentProgress5 += 19.8f; //Change this
                 ScoreMngr.TotalScore = UIMngr.currentProgress5;  //Change this
                 Sequence step = DOTween.Sequence();
                 step.AppendCallback(() => PlayVRbotScript5(18)); // s19

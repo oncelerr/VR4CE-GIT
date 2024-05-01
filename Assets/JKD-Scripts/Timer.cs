@@ -12,6 +12,8 @@ public class Timer : MonoBehaviour
     private Coroutine countdownCoroutine;
     public static float CDcurrentTime;
     public static float CUcurrentTime;
+    public static float CUcurrentTime2;
+    public static float CUcurrentTime3;
     private bool isPaused;
 
     public float countDuration = 1f; // Duration for each count
@@ -86,6 +88,7 @@ public class Timer : MonoBehaviour
 
 
     // Count Up Timer
+    // Timer 1
     public void StartCountUpTimer(float startTime, float endTime)
     {
         CUcurrentTime = startTime;
@@ -103,6 +106,43 @@ public class Timer : MonoBehaviour
         }
     }
 
+    // Timer 2
+    public void StartCountUpTimer2(float startTime, float endTime)
+    {
+        CUcurrentTime2 = startTime;
+        Coroutine timerCoroutine = StartCoroutine(UpdateUpTimer2(endTime));
+    }
+
+    private IEnumerator UpdateUpTimer2(float endTime)
+    {
+        float updateInterval = 1f;
+        while (CUcurrentTime2 < endTime)
+        {
+            CUcurrentTime2 += updateInterval;
+            // CountUpTimerMesh.text = CUcurrentTime2.ToString("F0");
+            yield return new WaitForSeconds(updateInterval);
+        }
+    }
+
+    // Timer 3
+    public void StartCountUpTimer3(float startTime, float endTime)
+    {
+        CUcurrentTime3 = startTime;
+        Coroutine timerCoroutine = StartCoroutine(UpdateUpTimer3(endTime));
+    }
+
+    private IEnumerator UpdateUpTimer3(float endTime)
+    {
+        float updateInterval = 1f;
+        while (CUcurrentTime3 < endTime)
+        {
+            CUcurrentTime3 += updateInterval;
+            // CountUpTimerMesh.text = CUcurrentTime2.ToString("F0");
+            yield return new WaitForSeconds(updateInterval);
+        }
+    }
+
+    // Looping Timer
     public void LoopingTimer()
     {
         if (!isRunningLoop)

@@ -149,8 +149,11 @@ public class s5TestTubeContent : MonoBehaviour
                 // Get the transition property from the material(shader)
                 float PC_Opacity = material.GetFloat("_Opacity");
 
-                // Multiply timer with 0.1 to get smooth transition
-                PC_Opacity = Timer.LoopCount * 0.1f;
+                if(!s5React2Done)
+                {
+                    // Multiply timer with 0.1 to get smooth transition
+                    PC_Opacity = Timer.LoopCount * 0.1f;
+                }
                 
                 if(!s5React1Done && s5React2Done)
                 {
@@ -161,7 +164,6 @@ public class s5TestTubeContent : MonoBehaviour
 
                 // Set the opacity value in the material
                 material.SetFloat("_Opacity", PC_Opacity);
-
             }
         }
     }
