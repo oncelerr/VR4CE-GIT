@@ -160,17 +160,17 @@ public class leftPlateTrigger : MonoBehaviour
         {
             leftPlateWeight = leftPlateWeight - 6;
             triggerZoneManager.seventhQuestion();
-            //eighth question
-            if (other.CompareTag("C2H5OH_molecule"))
-            {
-                leftPlateWeight = leftPlateWeight - 17;
-                triggerZoneManager.eighthQuestion();
-            }
-            if (other.CompareTag("O2_molecule8"))
-            {
-                leftPlateWeight = leftPlateWeight - 6;
-                triggerZoneManager.eighthQuestion();
-            }
+        }
+        //eighth question
+        if (other.CompareTag("C2H5OH_molecule"))
+        {
+            leftPlateWeight = leftPlateWeight - 17;
+            triggerZoneManager.eighthQuestion();
+        }
+        if (other.CompareTag("O2_molecule8"))
+        {
+            leftPlateWeight = leftPlateWeight - 6;
+            triggerZoneManager.eighthQuestion();
         }
         //ninth question
         if (other.CompareTag("H2O_molecule7"))

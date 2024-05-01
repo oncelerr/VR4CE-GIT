@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class triggerZoneForSugars : MonoBehaviour
 {
+    public GameManager gamemanager;
+        
     private int sugarCount = 0;
     private int coffeeCount = 0;
     private int waterCount = 0;
@@ -45,12 +47,14 @@ public class triggerZoneForSugars : MonoBehaviour
                         {
                             fillUpObject.SetActive(true);
                             Debug.Log("1st layer");
+                            gamemanager.IncrementUniversalScore();
                         }
 
                         if (sugarCount >= 150)
                         {
                             fillUpObject1.SetActive(true);
                             Debug.Log("2nd layer");
+                            gamemanager.IncrementUniversalScore();
                         }
 
                         if (sugarCount == 250)
@@ -59,6 +63,24 @@ public class triggerZoneForSugars : MonoBehaviour
                             Debug.Log("3rd layer");
 
                             playStepsScript.PlayStepIndex(6);
+                            gamemanager.IncrementUniversalScore();
+                        }
+
+                        if (sugarCount == 251)
+                        {
+                            gamemanager.MinusUniversalScore();
+                        }
+                        if (sugarCount == 271)
+                        {
+                            gamemanager.MinusUniversalScore();
+                        }
+                        if (sugarCount == 291)
+                        {
+                            gamemanager.MinusUniversalScore();
+                        }
+                        if (sugarCount == 311)
+                        {
+                            gamemanager.MinusUniversalScore();
                         }
 
                         // Increase loadingFront scale
@@ -103,6 +125,7 @@ public class triggerZoneForSugars : MonoBehaviour
                             if (coffeeCount == 50)
                             {
                                 playStepsScript.PlayStepIndex(7);
+                                gamemanager.IncrementUniversalScore();
                             }
                         }
 
@@ -110,12 +133,14 @@ public class triggerZoneForSugars : MonoBehaviour
                         {
                             fillUpObject4.SetActive(true);
                             Debug.Log("2nd layer");
+                            gamemanager.MinusUniversalScore();
                         }
 
                         if (coffeeCount == 250)
                         {
                             fillUpObject5.SetActive(true);
                             Debug.Log("3rd layer");
+                            gamemanager.MinusUniversalScore();
                         }
 
                         IncreaseLoadingFrontScale1();
@@ -155,6 +180,8 @@ public class triggerZoneForSugars : MonoBehaviour
                         fillUpObject6.SetActive(true);
                         Debug.Log("2nd layer");
 
+                        gamemanager.IncrementUniversalScore();
+
                         // Play particle system named "smoke"
                         ParticleSystem smokeParticleSystem = mugObject.GetComponentInChildren<ParticleSystem>();
                         if (smokeParticleSystem != null)
@@ -171,19 +198,21 @@ public class triggerZoneForSugars : MonoBehaviour
                     {
                         fillUpObject7.SetActive(true);
                         Debug.Log("2nd layer");
+                        gamemanager.IncrementUniversalScore();
                     }
 
                     if (waterCount >= 300)
                     {
                         fillUpObject8.SetActive(true);
                         Debug.Log("2nd layer");
+                        gamemanager.IncrementUniversalScore();
                     }
 
                     if (waterCount == 400)
                     {
                         fillUpObject9.SetActive(true);
                         Debug.Log("2nd layer");
-
+                        gamemanager.IncrementUniversalScore();
                         playStepsScript.PlayStepIndex(8);
                     }
 

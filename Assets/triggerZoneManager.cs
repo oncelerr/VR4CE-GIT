@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using static PlaySteps;
 
 public class triggerZoneManager : MonoBehaviour
 {
+    public GameManager gamemanager;
+
     public rightPlateTrigger rightPlateTriggerScript;
     public leftPlateTrigger leftPlateTriggerScript;
     public PlaySteps playStepsScript;
@@ -41,6 +44,7 @@ public class triggerZoneManager : MonoBehaviour
             playStepsScript.PlayStepIndex(10);
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -71,8 +75,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(11);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -104,8 +110,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(12);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -137,8 +145,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(13);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -170,8 +180,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(14);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -202,8 +214,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(15);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -234,8 +248,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(16);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -266,8 +282,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(17);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
@@ -298,8 +316,10 @@ public class triggerZoneManager : MonoBehaviour
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.384f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.384f, -5.216f)));
             playStepsScript.PlayStepIndex(18);
+
             rightPlateTriggerScript.rightPlateWeight = 0;
             leftPlateTriggerScript.leftPlateWeight = 0;
+            gamemanager.IncrementUniversalScore();
         }
 
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);

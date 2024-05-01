@@ -11,12 +11,25 @@ public class GameManager : MonoBehaviour
     public int scoring;
     public List<Image> img;
 
-    private int universalScore = 100;
+    private float universalScore = 100;
     public TextMeshProUGUI scoreText; // Reference to the UI text to display the score
     public TextMeshProUGUI scoreMessage;
 
+    private float startTime;
+
     void Start()
     {
+        // Record the start time when the scene starts
+        startTime = Time.time;
+    }
+
+    void Update()
+    {
+        // Calculate the time elapsed since the scene started
+        float elapsedTime = Time.time - startTime;
+
+        // Multiply the universal score by the elapsed time
+        MultiplyScore(elapsedTime);
     }
 
     private void Awake()
@@ -44,7 +57,7 @@ public class GameManager : MonoBehaviour
         UpdateScoreText(); // Update the UI text
     }
 
-    public int GetUniversalScore()
+    public float GetUniversalScore()
     {
         return universalScore;
     }
@@ -84,5 +97,11 @@ public class GameManager : MonoBehaviour
     {
         IncrementUniversalScore(); // Increment the score when the button is clicked
         Debug.Log(universalScore);
+    }
+
+    public void MultiplyScore(float timeElapsed)
+    {
+        float universalScore1 = universalScore + timeElapsed;
+        universalScore = Mathf.FloorToInt(universalScore1 / 5);
     }
 }

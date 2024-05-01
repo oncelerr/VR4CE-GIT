@@ -107,10 +107,10 @@ public class s5TestTubeContent : MonoBehaviour
                 {
                     s5React3Done = true;
                     Sequence sequence = DOTween.Sequence();
-                    sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[0])); // r1   
-                    sequence.AppendInterval(_AudioMngr.vrBotReactions5[0].length); // Delay
-                    sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[1])); // r1   
-                    sequence.AppendInterval(_AudioMngr.vrBotReactions5[1].length); // Delay
+                    //sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[0])); // r1   
+                   // sequence.AppendInterval(_AudioMngr.vrBotReactions5[0].length); // Delay
+                    //sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[1])); // r1   
+                    //sequence.AppendInterval(_AudioMngr.vrBotReactions5[1].length); // Delay
                     sequence.OnComplete(() => { 
                             s5React2Done = true;
                             // Play vrBot`s final voice over 
