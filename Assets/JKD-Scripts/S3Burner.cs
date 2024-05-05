@@ -11,7 +11,7 @@ public class S3Burner : MonoBehaviour
 
     private void Start() 
     {
-        s3BurnerFireAmount = 0.4f;
+        s3BurnerFireAmount = 0.5f;
         s3burnAlreadyIgnited = false;
         s3BurnerFire.Stop();
     }
@@ -20,7 +20,7 @@ public class S3Burner : MonoBehaviour
     {
         if(other.gameObject.CompareTag("lighterFire"))
         {
-            if(!s3burnAlreadyIgnited)
+            if(!s3burnAlreadyIgnited && GameMngr.S3currentsteps == 4)
             {
                 s3burnAlreadyIgnited = true;
                 s3BurnerFire.Play();

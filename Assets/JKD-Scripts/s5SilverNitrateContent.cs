@@ -62,10 +62,10 @@ public class s5SilverNitrateContent : MonoBehaviour
                 _SilverNitrateAmount -= 0.01f;
             }
         }
-        else
-        {
-            _SilverNitrateAmount -= 0.01f;
-        }
+        // else
+        // {
+        //     _SilverNitrateAmount -= 0.01f;
+        // }
     }
     private void UpdateSilverNitrateContent() 
     {
@@ -91,12 +91,6 @@ public class s5SilverNitrateContent : MonoBehaviour
 
                 // Set the fill value in the material
                 material.SetFloat("_Fill", fillValue);
-
-                // Debug.Log("ferrous Current Fill Value: " + fillValue);
-            }
-            else
-            {
-                Debug.LogError("Ferrous Material does not have a _Fill property");
             }
         }
     }

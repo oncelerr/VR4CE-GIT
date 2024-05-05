@@ -37,15 +37,18 @@ public class AudioMngr : MonoBehaviour
     public AudioClip vrBotNice;
     public AudioClip forgetToCloseValve;
 
-    // S2 chem reactions
-    public AudioClip[] vrBotReactions;
+    // Chem reactions
+    public AudioClip[] vrBotReactions; //S2
+    public AudioClip[] vrBotReactions3; //S3
+    public AudioClip[] vrBotReactions4; //S4
+    public AudioClip[] vrBotReactions5; //S5
     
 
 
     // This method is for playing VRBot`s voice over
     public void PlaySubtitleVoiceOver(AudioClip audio)
     {
-        subtitleSource.clip = audio;
+        subtitleSource.clip = audio; 
         subtitleSource.Play();
         // Debug.Log("Voice is played"); 
     }
@@ -144,6 +147,13 @@ public class AudioMngr : MonoBehaviour
     }
 
     public void PlayVRBotS2Reactions(AudioClip audio)
+    {
+        subtitleSource.clip = audio;
+        subtitleSource.Play();
+        // Debug.Log("voice over is played");
+    }
+
+    public void PlayVRBotChemReactions(AudioClip audio)
     {
         subtitleSource.clip = audio;
         subtitleSource.Play();

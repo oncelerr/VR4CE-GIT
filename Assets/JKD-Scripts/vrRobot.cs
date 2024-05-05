@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class vrRobot : MonoBehaviour
 {
+    [SerializeField] HandsMnger _HandsMnger;
     [SerializeField] ScoreMngr _ScoreMngr;
     [SerializeField] AudioMngr _AudioMngr;
     [SerializeField] GameMngr _GameMngr;
@@ -72,7 +73,7 @@ public class vrRobot : MonoBehaviour
 
     public void p1() //PPE Check sub1
     {
-        Sequence p1sequence = DOTween.Sequence();
+        Sequence p1sequence = DOTween.Sequence().SetId("p1");
         p1sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Panel off
         p1sequence.AppendInterval(1.7f);  // Delay
         p1sequence.AppendCallback(() => _doorAnimation.OpenDoor()); // s20
@@ -107,17 +108,21 @@ public class vrRobot : MonoBehaviour
         p2sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p2sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p2sequence.AppendInterval(.3f); // Delay of .3s
-        p2sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p2sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p2sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p2sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p2sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
         p2sequence.AppendCallback(() => HoverVRbot(true));
-        p2sequence.AppendInterval(1.5f);
-        p2sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
-        p2sequence.AppendCallback(() => PlayVRbotScript(9)); // s9
-        p2sequence.AppendInterval(_AudioMngr.vrBotVoice[9].length); // Delay
-        p2sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub1));
         p2sequence.Play(); 
+
+        // This sequence triggers if the player entered to the main lab
+        Sequence p21sequence = DOTween.Sequence().SetId("p21");
+        p21sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
+        p21sequence.AppendCallback(() => PlayVRbotScript(9)); // s9
+        p21sequence.AppendInterval(_AudioMngr.vrBotVoice[9].length); // Delay
+        p21sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub1));
+        p21sequence.Pause(); 
+
     }
 
     public void p3()  
@@ -141,12 +146,18 @@ public class vrRobot : MonoBehaviour
         p3sequence.AppendInterval(_AudioMngr.vrBotVoice[12].length); // Delay
         p3sequence.AppendCallback(() => PlayVRbotScript(13)); // s13
         p3sequence.AppendInterval(_AudioMngr.vrBotVoice[13].length); // Delay
+        p3sequence.AppendCallback(() => _HandsMnger.DisableEnableHandsInteraction(true)); // Enable hands interaction 
         p3sequence.Play(); 
     }
 
+    
+    
+    // SUBLEVEL 2
+
+
     public void p4() //PPE Check sub2
     {
-        Sequence p4sequence = DOTween.Sequence();
+        Sequence p4sequence = DOTween.Sequence().SetId("p4");
         p4sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Panel off
         p4sequence.AppendCallback(() => HoverVRbot(false));// Hover OFF   
         p4sequence.AppendInterval(1.7f);  // Delay
@@ -174,10 +185,6 @@ public class vrRobot : MonoBehaviour
         p4sequence.Play(); 
 
     }
-    
-    
-    // SUBLEVEL 2
-
 
     public void p5()
     {
@@ -187,33 +194,38 @@ public class vrRobot : MonoBehaviour
         p5sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p5sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p5sequence.AppendInterval(.3f); // Delay of .3s
-        p5sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p5sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p5sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p5sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p5sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
         p5sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
-        p5sequence.AppendInterval(1.5f); // Delay
-        p5sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
-        p5sequence.AppendCallback(() => PlayVRbotScript2(9)); // s9
-        p5sequence.AppendInterval(_AudioMngr.vrBotVoice2[9].length); // Delay
-        p5sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub2));  // Show next path 
-        p5sequence.AppendCallback(() => HoverVRbot(false)); //Hover OFF
-        p5sequence.AppendCallback(() => RotateVRbot(0f, .2f)); // VRBot will face the laboratory 2 
-        p5sequence.Append(transform.DOMove(position[5], 2f)); // VRBot will go to laboratory 2
-        p5sequence.AppendCallback(() => _doorAnimation2.OpenDoor2()); // Laboratory 2 door will open
-        p5sequence.Append(transform.DOMove(position[6], 1f)); // VRBot will go to laboratory 2
-        p5sequence.Append(transform.DOMove(position[7], 1f)); // VRBot will go above the table
-        p5sequence.AppendCallback(() => RotateVRbot(-90f, .2f)); // VRBot will face the player
-        p5sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
-        p5sequence.AppendCallback(() => _GameMngr._doorTrigger2.enabled = true); // Lab 2 door will be enabled
-        p5sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub2));  // Show next path 
         p5sequence.Play(); 
+
+        // This sequence triggers if the player entered to the main lab
+        Sequence p51sequence = DOTween.Sequence().SetId("p51");
+        p51sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
+        p51sequence.AppendCallback(() => PlayVRbotScript2(9)); // s9
+        p51sequence.AppendInterval(_AudioMngr.vrBotVoice2[9].length); // Delay
+        p51sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
+        p51sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub2));  // Show next path 
+        p51sequence.AppendCallback(() => HoverVRbot(false)); //Hover OFF
+        p51sequence.AppendCallback(() => RotateVRbot(0f, .2f)); // VRBot will face the laboratory 2 
+        p51sequence.Append(transform.DOMove(position[5], 2f)); // VRBot will go to laboratory 2
+        p51sequence.AppendCallback(() => _doorAnimation2.OpenDoor2()); // Laboratory 2 door will open
+        p51sequence.Append(transform.DOMove(position[6], 1f)); // VRBot will go to laboratory 2
+        p51sequence.Append(transform.DOMove(position[7], 1f)); // VRBot will go above the table
+        p51sequence.AppendCallback(() => RotateVRbot(-90f, .2f)); // VRBot will face the player
+        p51sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
+        p51sequence.AppendCallback(() => _GameMngr._doorTrigger2.enabled = true); // Lab 2 door will be enabled
+        p51sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub2));  // Show next path 
+        p51sequence.Pause(); 
     }
 
     public void p6()
     {
         Sequence p6sequence = DOTween.Sequence();
         p6sequence.AppendInterval(1f); // Delay
+        p6sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
         p6sequence.AppendCallback(() => PlayVRbotScript2(10)); // s10
         p6sequence.AppendInterval(_AudioMngr.vrBotVoice2[10].length); // Delay
         p6sequence.AppendCallback(() => PlayVRbotScript2(11)); // s11
@@ -223,6 +235,7 @@ public class vrRobot : MonoBehaviour
         p6sequence.AppendInterval(_AudioMngr.vrBotVoice2[12].length); // Delay
         p6sequence.AppendCallback(() => PlayVRbotScript2(13)); // s13s
         p6sequence.AppendInterval(_AudioMngr.vrBotVoice2[13].length); // Delay
+        p6sequence.AppendCallback(() => _HandsMnger.DisableEnableHandsInteraction(true)); // Enable hands interaction 
         p6sequence.Play(); 
     }
     
@@ -232,7 +245,7 @@ public class vrRobot : MonoBehaviour
 
     public void p7() //PPE Check sub3
     {
-        Sequence p7sequence = DOTween.Sequence().SetId("p7");;
+        Sequence p7sequence = DOTween.Sequence().SetId("p7");
         p7sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Panel off
         p7sequence.AppendCallback(() => HoverVRbot(false));// Hover OFF   
         p7sequence.AppendInterval(1.7f);  // Delay
@@ -272,20 +285,21 @@ public class vrRobot : MonoBehaviour
         p8sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p8sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p8sequence.AppendInterval(.3f); // Delay of .3s
-        p8sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p8sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p8sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p8sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p8sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
         p8sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
-        p8sequence.AppendInterval(1.5f); // Delay
-        p8sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
-
-            // Equipment overview starts here
-
-        p8sequence.AppendCallback(() => PlayVRbotScript3(9)); // s9
-        p8sequence.AppendInterval(_AudioMngr.vrBotVoice3[9].length); // Delay
-        p8sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub3));  // Show next path
         p8sequence.Play(); 
+
+        
+        // This sequence triggers if the player entered to the main lab
+        Sequence p81sequence = DOTween.Sequence().SetId("p81");
+        p81sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
+        p81sequence.AppendCallback(() => PlayVRbotScript3(9)); // s9
+        p81sequence.AppendInterval(_AudioMngr.vrBotVoice3[9].length); // Delay
+        p81sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub3));  // Show next path
+        p81sequence.Pause(); 
     }
 
     public void p9()
@@ -310,6 +324,7 @@ public class vrRobot : MonoBehaviour
         p9sequence.AppendInterval(_AudioMngr.vrBotVoice3[12].length); // Delay
         p9sequence.AppendCallback(() => PlayVRbotScript3(13)); // s13
         p9sequence.AppendInterval(_AudioMngr.vrBotVoice3[13].length); // Delay
+        p9sequence.AppendCallback(() => _HandsMnger.DisableEnableHandsInteraction(true)); // Enable hands interaction 
         p9sequence.Play(); 
 
     }
@@ -320,7 +335,7 @@ public class vrRobot : MonoBehaviour
 
     public void p10() //PPE Check sub4
     {
-        Sequence p10sequence = DOTween.Sequence();
+        Sequence p10sequence = DOTween.Sequence().SetId("p10");
         p10sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Panel off
         p10sequence.AppendCallback(() => HoverVRbot(false));// Hover OFF   
         p10sequence.AppendInterval(1.7f);  // Delay
@@ -360,33 +375,32 @@ public class vrRobot : MonoBehaviour
         p11sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p11sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p11sequence.AppendInterval(.3f); // Delay of .3s
-        p11sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p11sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p11sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p11sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p11sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
         p11sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
-        p11sequence.AppendInterval(1.5f); // Delay
-        p11sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
-
-            // Equipment overview starts here
-
-        p11sequence.AppendCallback(() => PlayVRbotScript4(9)); // s9
-        p11sequence.AppendInterval(_AudioMngr.vrBotVoice4[9].length); // Delay
-        p11sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub4));  // Show next path
-        
-        p11sequence.AppendCallback(() => HoverVRbot(false)); //Hover OFF
-        p11sequence.AppendCallback(() => RotateVRbot(0f, .2f)); // VRBot will face the laboratory 2 
-        p11sequence.Append(transform.DOMove(position[5], 2f)); // VRBot will go to laboratory 2
-        p11sequence.AppendCallback(() => _doorAnimation2.OpenDoor2()); // Laboratory 2 door will open
-        p11sequence.Append(transform.DOMove(position[10], 1f)); // VRBot will go to laboratory 2
-        p11sequence.Append(transform.DOMove(position[11], 1f)); // VRBot will go above the table
-        p11sequence.AppendCallback(() => RotateVRbot(-57.58f, .2f)); // VRBot will face the player
-        p11sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
-        p11sequence.AppendCallback(() => _GameMngr._doorTrigger2.enabled = true); // Lab 2 door will be enabled
-        p11sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub4));  // Show next path 
         p11sequence.Play(); 
 
-        p11sequence.Play(); 
+         
+        // This sequence triggers if the player entered to the main lab
+        Sequence p111sequence = DOTween.Sequence().SetId("p111");
+        p111sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
+        p111sequence.AppendCallback(() => PlayVRbotScript4(9)); // s9
+        p111sequence.AppendInterval(_AudioMngr.vrBotVoice4[9].length); // Delay
+        p111sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub4));  // Show next path
+        p111sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set active
+        p111sequence.AppendCallback(() => HoverVRbot(false)); //Hover OFF
+        p111sequence.AppendCallback(() => RotateVRbot(0f, .2f)); // VRBot will face the laboratory 2 
+        p111sequence.Append(transform.DOMove(position[5], 2f)); // VRBot will go to laboratory 2
+        p111sequence.AppendCallback(() => _doorAnimation2.OpenDoor2()); // Laboratory 2 door will open
+        p111sequence.Append(transform.DOMove(position[10], 1f)); // VRBot will go to laboratory 2
+        p111sequence.Append(transform.DOMove(position[11], 1f)); // VRBot will go above the table
+        p111sequence.AppendCallback(() => RotateVRbot(-57.58f, .2f)); // VRBot will face the player
+        p111sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
+        p111sequence.AppendCallback(() => _GameMngr._doorTrigger2.enabled = true); // Lab 2 door will be enabled
+        p111sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub4));  // Show next path 
+        p111sequence.Pause(); 
     }
 
     public void p12()
@@ -404,6 +418,7 @@ public class vrRobot : MonoBehaviour
         p12sequence.AppendInterval(_AudioMngr.vrBotVoice4[12].length); // Delay
         p12sequence.AppendCallback(() => PlayVRbotScript4(13)); // s13
         p12sequence.AppendInterval(_AudioMngr.vrBotVoice4[13].length); // Delay
+        p12sequence.AppendCallback(() => _HandsMnger.DisableEnableHandsInteraction(true)); // Enable hands interaction 
         p12sequence.Play(); 
 
     }
@@ -414,7 +429,7 @@ public class vrRobot : MonoBehaviour
 
     public void p13() //PPE Check sub5
     {
-        Sequence p13sequence = DOTween.Sequence();
+        Sequence p13sequence = DOTween.Sequence().SetId("p13");
         p13sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Panel off
         p13sequence.AppendCallback(() => HoverVRbot(false));// Hover OFF   
         p13sequence.AppendInterval(1.7f);  // Delay
@@ -454,20 +469,21 @@ public class vrRobot : MonoBehaviour
         p14sequence.AppendCallback(() => _subtitlePanel.SetActive(false)); // Subtitle panel will be set inactive
         p14sequence.AppendCallback(() => RotateVRbot(90f, .2f)); // VRBot will face the exit room
         p14sequence.AppendInterval(.3f); // Delay of .3s
-        p14sequence.Append(transform.DOMove(position[2], 3f)); // VRBot will exit the PPE room
+        p14sequence.Append(transform.DOMove(position[2], 1.5f)); // VRBot will exit the PPE room
         p14sequence.AppendCallback(() => HoverVRbot(false));  //VRBot`s hover is set inactive
         p14sequence.AppendCallback(() => RotateVRbot(450f, .3f)); 
         p14sequence.AppendCallback(() => RotateVRbot(-90f, .3f));
         p14sequence.AppendCallback(() => HoverVRbot(true)); //Hover ON
-        p14sequence.AppendInterval(1.5f); // Delay
-        p14sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
-
-            // Equipment overview starts here
-
-        p14sequence.AppendCallback(() => PlayVRbotScript5(9)); // s9
-        p14sequence.AppendInterval(_AudioMngr.vrBotVoice5[9].length); // Delay
-        p14sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub5));  // Show next path
         p14sequence.Play(); 
+
+         
+        // This sequence triggers if the player entered to the main lab
+        Sequence p141sequence = DOTween.Sequence().SetId("p141");
+        p141sequence.AppendCallback(() => _subtitlePanel.SetActive(true)); // Subtitle panel will be set active
+        p141sequence.AppendCallback(() => PlayVRbotScript5(9)); // s9
+        p141sequence.AppendInterval(_AudioMngr.vrBotVoice5[9].length); // Delay
+        p141sequence.AppendCallback(() => _Checkpoint.ShowCheckpoint(Checkpoint._CheckpointIndexSub5));  // Show next path
+        p141sequence.Pause(); 
     }
 
     public void p15()
@@ -492,6 +508,7 @@ public class vrRobot : MonoBehaviour
         p15sequence.AppendInterval(_AudioMngr.vrBotVoice5[12].length); // Delay
         p15sequence.AppendCallback(() => PlayVRbotScript5(13)); // s13
         p15sequence.AppendInterval(_AudioMngr.vrBotVoice5[13].length); // Delay
+        p15sequence.AppendCallback(() => _HandsMnger.DisableEnableHandsInteraction(true)); // Enable hands interaction 
         p15sequence.Play(); 
     }
     
@@ -616,7 +633,7 @@ public class vrRobot : MonoBehaviour
         step.AppendCallback(() => PlayVRbotScript4(Scriptt)); // Change this
         step.AppendInterval(_AudioMngr.vrBotVoice4[Scriptt].length); // Change this
         step.Play(); 
-        UIMngr.currentProgress4 += 16.66f; // Change this
+        UIMngr.currentProgress4 += 14f; // Change this
     }
 
     public void PlayScritStep5(int Scriptt) // Change this
@@ -626,7 +643,7 @@ public class vrRobot : MonoBehaviour
         step.AppendCallback(() => PlayVRbotScript5(Scriptt)); // Change this
         step.AppendInterval(_AudioMngr.vrBotVoice5[Scriptt].length); // Change this
         step.Play(); 
-        UIMngr.currentProgress5 += 16.66f; // Change this
+        UIMngr.currentProgress5 += 19.8f; // Change this
     }
     
     public void Sub1ExperimentSteps()
@@ -720,12 +737,12 @@ public class vrRobot : MonoBehaviour
                 step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
                 step.Play(); 
             }
-            if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
-            {
-                alreadyPlayedSpilledFunction = true;
-                _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
-                _ScoreMngr.CheckScore();
-            }
+            // if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
+            // {
+            //     alreadyPlayedSpilledFunction = true;
+            //     _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
+            //     _ScoreMngr.CheckScore();
+            // }
         }
     }
     
@@ -758,18 +775,22 @@ public class vrRobot : MonoBehaviour
                 PlayScritStep3(18);
             } 
 
-            if(GameMngr.S3currentsteps == 6f && !currentStepExecuted3) //Step6
+            if(GameMngr.S3currentsteps == 6f && !currentStepExecuted3) //Step5
             {
-                GameMngr.S3currentsteps = 7f; // Change this
+                PlayScritStep3(19);
+            } 
+            if(GameMngr.S3currentsteps == 7f && !currentStepExecuted3) //Step6
+            {
+                GameMngr.S3currentsteps = 8f; // Change this
                 currentStepExecuted3 = true;  // Change this
                 GameMngr.alreadyReachLastStep = true;
                 UIMngr.currentProgress3 += 16.66f; //Change this
                 ScoreMngr.TotalScore = UIMngr.currentProgress3;  //Change this
                 Sequence step = DOTween.Sequence();
-                step.AppendCallback(() => PlayVRbotScript3(19)); // s19
-                step.AppendInterval(_AudioMngr.vrBotVoice3[19].length); // Delay
-                step.AppendCallback(() => PlayVRbotScript3(20)); // s20
+                step.AppendCallback(() => PlayVRbotScript3(20)); // s19
                 step.AppendInterval(_AudioMngr.vrBotVoice3[20].length); // Delay
+                step.AppendCallback(() => PlayVRbotScript3(21)); // s20
+                step.AppendInterval(_AudioMngr.vrBotVoice3[21].length); // Delay
                 step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
                 step.Play(); 
             }
@@ -784,12 +805,117 @@ public class vrRobot : MonoBehaviour
     
     public void Sub4ExperimentSteps()
     {
-        // 
+        if(GameMngr.CurrentLevelIndex == 4)
+        {
+            if(GameMngr.S4currentsteps == 1f && !currentStepExecuted4) //Step1
+            {
+                PlayScritStep4(14);
+            }
+
+            if(GameMngr.S4currentsteps == 2f && !currentStepExecuted4) //Step2
+            {
+                PlayScritStep4(15); 
+            } 
+
+            if(GameMngr.S4currentsteps == 3f && !currentStepExecuted4) //Step3
+            {
+                PlayScritStep4(16);
+            } 
+
+            if(GameMngr.S4currentsteps == 4f && !currentStepExecuted4) //Step4
+            {
+                PlayScritStep4(17);
+            }
+
+            if(GameMngr.S4currentsteps == 5f && !currentStepExecuted4) //Step5
+            {
+                PlayScritStep4(18);
+            } 
+
+            if(GameMngr.S4currentsteps == 6f && !currentStepExecuted4) //Step5
+            {
+                PlayScritStep4(19);
+            } 
+            if(GameMngr.S4currentsteps == 7f && !currentStepExecuted4) //Step6
+            {
+                GameMngr.S4currentsteps = 8f; // Change this
+                currentStepExecuted4 = true;  // Change this
+                GameMngr.alreadyReachLastStep = true;
+                UIMngr.currentProgress4 += 16f; //Change this
+                ScoreMngr.TotalScore = UIMngr.currentProgress4;  //Change this
+                Sequence step = DOTween.Sequence();
+                step.AppendCallback(() => PlayVRbotScript4(20)); // s20
+                step.AppendInterval(_AudioMngr.vrBotVoice4[20].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[0])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[0].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[1])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[1].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[2])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[2].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[3])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[3].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[4])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[4].length); // Delay
+                step.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions4[5])); // reactions 
+                step.AppendInterval(_AudioMngr.vrBotReactions4[5].length); // Delay
+                step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
+                step.Play(); 
+            }
+            // if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
+            // {
+            //     alreadyPlayedSpilledFunction = true;
+            //     _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
+            //     _ScoreMngr.CheckScore();
+            // }
+        }
     }
     
     public void Sub5ExperimentSteps()
     {
-        // 
+        if(GameMngr.CurrentLevelIndex == 5)
+        {
+            if(GameMngr.S5currentsteps == 1f && !currentStepExecuted5) //Step1
+            {
+                PlayScritStep5(14);
+            }
+
+            if(GameMngr.S5currentsteps == 2f && !currentStepExecuted5) //Step2
+            {
+                PlayScritStep5(15); 
+            } 
+
+            if(GameMngr.S5currentsteps == 3f && !currentStepExecuted5) //Step3
+            {
+                PlayScritStep5(16);
+            } 
+
+            if(GameMngr.S5currentsteps == 4f && !currentStepExecuted5) //Step4
+            {
+                PlayScritStep5(17);
+            }
+
+            if(GameMngr.S5currentsteps == 5f && !currentStepExecuted5) //Step5
+            {
+                GameMngr.S5currentsteps = 6f; // Change this
+                currentStepExecuted5 = true;  // Change this
+                GameMngr.alreadyReachLastStep = true;
+                UIMngr.currentProgress5 += 19.8f; //Change this
+                ScoreMngr.TotalScore = UIMngr.currentProgress5;  //Change this
+                Sequence step = DOTween.Sequence();
+                step.AppendCallback(() => PlayVRbotScript5(18)); // s19
+                step.AppendInterval(_AudioMngr.vrBotVoice5[18].length); // Delay
+                step.AppendCallback(() => PlayVRbotScript5(19)); // s20
+                step.AppendInterval(_AudioMngr.vrBotVoice5[19].length); // Delay
+                step.AppendCallback(() => _ScoreMngr.CheckScore()); // verdict
+                step.Play(); 
+            }
+            // if(GameMngr.S2SpilledChemPowder && !alreadyPlayedSpilledFunction)
+            // {
+            //     alreadyPlayedSpilledFunction = true;
+            //     _AudioMngr.PlayVRBotS2Reactions(_AudioMngr.vrBotReactions[3]); // Oh no you`ve spilled it
+            //     _ScoreMngr.CheckScore();
+            // }
+        }
     }
 
 }

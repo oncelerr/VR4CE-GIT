@@ -153,13 +153,15 @@ public class GameMngr : MonoBehaviour
                 ppeRoomDone = true;
                 _doorTrigger.enabled = true;
                 _doorAnimation.OpenDoor();
-                _vrRobot.p2();
+                DOTween.Pause("p1"); // Pause scripts 1-7 if player is already ppe ready
+                _vrRobot.p2(); 
             }
             else if(_DataMngr.player.LevelIndex == 2)
             {
                 ppeRoomDone = true;
                 _doorTrigger.enabled = true;
                 _doorAnimation.OpenDoor();
+                DOTween.Pause("p4"); // Pause scripts 1-7 if player is already ppe ready
                 _vrRobot.p5();
             }
             else if(_DataMngr.player.LevelIndex == 3)
@@ -175,6 +177,7 @@ public class GameMngr : MonoBehaviour
                 ppeRoomDone = true;
                 _doorTrigger.enabled = true;
                 _doorAnimation.OpenDoor();
+                DOTween.Pause("p10"); // Pause scripts 1-7 if player is already ppe ready
                 _vrRobot.p11();
             }
             else if(_DataMngr.player.LevelIndex == 5)
@@ -182,6 +185,7 @@ public class GameMngr : MonoBehaviour
                 ppeRoomDone = true;
                 _doorTrigger.enabled = true;
                 _doorAnimation.OpenDoor();
+                DOTween.Pause("p13"); // Pause scripts 1-7 if player is already ppe ready
                 _vrRobot.p14();
             }
         }

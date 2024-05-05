@@ -107,10 +107,10 @@ public class s5TestTubeContent : MonoBehaviour
                 {
                     s5React3Done = true;
                     Sequence sequence = DOTween.Sequence();
-                    //sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[0])); // r1   
-                   // sequence.AppendInterval(_AudioMngr.vrBotReactions5[0].length); // Delay
-                    //sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[1])); // r1   
-                    //sequence.AppendInterval(_AudioMngr.vrBotReactions5[1].length); // Delay
+                    sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[0])); // r1   
+                    sequence.AppendInterval(_AudioMngr.vrBotReactions5[0].length); // Delay
+                    sequence.AppendCallback(() => _AudioMngr.PlayVRBotChemReactions(_AudioMngr.vrBotReactions5[1])); // r1   
+                    sequence.AppendInterval(_AudioMngr.vrBotReactions5[1].length); // Delay
                     sequence.OnComplete(() => { 
                             s5React2Done = true;
                             // Play vrBot`s final voice over 
@@ -149,8 +149,11 @@ public class s5TestTubeContent : MonoBehaviour
                 // Get the transition property from the material(shader)
                 float PC_Opacity = material.GetFloat("_Opacity");
 
-                // Multiply timer with 0.1 to get smooth transition
-                PC_Opacity = Timer.LoopCount * 0.1f;
+                if(!s5React2Done)
+                {
+                    // Multiply timer with 0.1 to get smooth transition
+                    PC_Opacity = Timer.LoopCount * 0.1f;
+                }
                 
                 if(!s5React1Done && s5React2Done)
                 {
@@ -161,7 +164,6 @@ public class s5TestTubeContent : MonoBehaviour
 
                 // Set the opacity value in the material
                 material.SetFloat("_Opacity", PC_Opacity);
-
             }
         }
     }

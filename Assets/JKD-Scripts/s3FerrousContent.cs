@@ -13,6 +13,7 @@ public class s3FerrousContent : MonoBehaviour
     // private bool wasted = false;
     private Material material;
     private bool isHoldingFerrousjar = false;
+    private bool alreadyCheckTransferState = false;
 
     void Start()
     {
@@ -51,7 +52,7 @@ public class s3FerrousContent : MonoBehaviour
                 ferrousSulfateAmount -= 0.01f;
             }
         }
-        else if(ferrousSulfateAmount > 0)
+        else
         {
             ferrousSulfateAmount -= 0.01f;
         }
@@ -98,6 +99,16 @@ public class s3FerrousContent : MonoBehaviour
         else
         {
             isHoldingFerrousjar = false;
+        }
+    }
+
+    // This method checks if the ferrous content is spilled and didn`t transfer correctly to the test tube
+    private void CheckIfWasted()
+    {
+        if(ferrousSulfateAmount <= 0f && s3TestTubeContent.s3testtubeAmount == 0f && !alreadyCheckTransferState) 
+        {
+            alreadyCheckTransferState = true;
+            
         }
     }
 }

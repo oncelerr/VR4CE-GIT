@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class HandsMnger : MonoBehaviour
 {
+    public MonoBehaviour[] m_Hands;
     public static bool HodingHoseNozzle = false;
     private bool isUsingRightHand;
 
@@ -22,7 +23,7 @@ public class HandsMnger : MonoBehaviour
             
         }
 
-        // Check if the player is holding the test tube
+        // Sublevel 3 Check if the player is holding the test tube 
         if(GameMngr.CurrentLevelIndex == 3)
         {
             if(other.gameObject.CompareTag("testtube")) 
@@ -35,6 +36,22 @@ public class HandsMnger : MonoBehaviour
             else
             {
                 s3TestTubeContent.testtubeHoldingByHuman = false;
+            }
+        }
+
+        // Sublevel 5 Check if the player is holding the test tube 
+        if(GameMngr.CurrentLevelIndex == 5)
+        {
+            if(other.gameObject.CompareTag("testtube")) 
+            {   
+                if(isUsingRightHand) 
+                {   
+                    s5TestTubeContent.S5testtubeHoldingByHuman = true;
+                }
+            }
+            else
+            {
+                s5TestTubeContent.S5testtubeHoldingByHuman = false;
             }
         }
     }
@@ -56,4 +73,14 @@ public class HandsMnger : MonoBehaviour
             isUsingRightHand = false;
         }
     }
+
+    public void DisableEnableHandsInteraction(bool state)
+    {
+        foreach (MonoBehaviour script in m_Hands)
+        {
+            script.enabled = state;
+        }
+    }
+
+
 }

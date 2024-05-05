@@ -41,7 +41,7 @@ public class s5PotassiumCarbonateContent : MonoBehaviour
         {
             _PotassiumCarbonatePour.Stop();
         }
-        if(s5TestTubeContent.s5testtubeAmountPC >= 0.5f)
+        if(s5TestTubeContent.s5testtubeAmountPC >= 0.8f)
         {
             _PotassiumCarbonatePour.Stop();
             _PotassiumCarbonateContentObj.SetActive(false);
@@ -62,10 +62,10 @@ public class s5PotassiumCarbonateContent : MonoBehaviour
                 _PotassiumCarbonateAmount -= 0.01f;
             }
         }
-        else
-        {
-            _PotassiumCarbonateAmount -= 0.01f;
-        }
+        // else
+        // {
+        //     _PotassiumCarbonateAmount -= 0.01f;
+        // }
     }
     private void UpdatePotassiumCarbonateContent() 
     {
@@ -91,12 +91,6 @@ public class s5PotassiumCarbonateContent : MonoBehaviour
 
                 // Set the fill value in the material
                 material.SetFloat("_Fill", fillValue);
-
-                // Debug.Log("ferrous Current Fill Value: " + fillValue);
-            }
-            else
-            {
-                Debug.LogError("Ferrous Material does not have a _Fill property");
             }
         }
     }

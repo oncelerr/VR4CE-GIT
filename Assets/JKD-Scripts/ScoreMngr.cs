@@ -7,6 +7,7 @@ using TMPro;
 
 public class ScoreMngr : MonoBehaviour
 {
+
     public AudioMngr _AudioMngr;
     public GameObject ScoreMenuObj;
     public GameObject[] Stars;
@@ -18,19 +19,52 @@ public class ScoreMngr : MonoBehaviour
 
     public Color RedBtn = Color.red;
     public Color GreenBtn = Color.green;
+    public Vector3[] ScoreboardPosition;
+    public Transform ScoreBoardTransform;
+    public Transform PlayerTransform;
 
     public static float TotalScore;
 
     private void Start() 
     {
         ScoreMenuObj.SetActive(false);
+        switch (GameMngr.CurrentLevelIndex)
+        {
+            case 1:
+                ScoreBoardTransform.DOMove(ScoreboardPosition[GameMngr.CurrentLevelIndex], 0.5f);
+                break;
+            case 2:
+                ScoreBoardTransform.DOMove(ScoreboardPosition[GameMngr.CurrentLevelIndex], 0.5f);
+                break;
+            case 3:
+                ScoreBoardTransform.DOMove(ScoreboardPosition[GameMngr.CurrentLevelIndex], 0.5f);
+                break;
+            case 4:
+                ScoreBoardTransform.DOMove(ScoreboardPosition[GameMngr.CurrentLevelIndex], 0.5f);
+                break;
+            case 5:
+                ScoreBoardTransform.DOMove(ScoreboardPosition[GameMngr.CurrentLevelIndex], 0.5f);
+                break;
+            default:
+                Debug.LogError("Invalid level index!");
+                break;
+        }
     } 
+
+    private void Update() 
+    {
+        Vector3 direction = PlayerTransform.position - ScoreBoardTransform.position;
+        direction.y = 0; // Set the Y component to 0 to only rotate around the Y axis
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        ScoreBoardTransform.rotation = rotation;
+        // ScoreBoardTransform.LookAt(PlayerTransform, Vector3.up);
+    }
     public void CheckScore()
     {
         ScoreMenuObj.SetActive(true);
         // Check first if the current level is not 5
-        if(GameMngr.CurrentLevelIndex == 1 || GameMngr.CurrentLevelIndex == 2 || GameMngr.CurrentLevelIndex == 3 || GameMngr.CurrentLevelIndex == 4)
-        {
+        if(GameMngr.CurrentLevelIndex <= 4 && GameMngr.CurrentLevelIndex > 0)
+        {   
             if(TotalScore < 65) 
             {
                 Score.text = "45%";
@@ -85,7 +119,7 @@ public class ScoreMngr : MonoBehaviour
             }
         }
         // If current level is 5 change button will be different
-        else if(GameMngr.CurrentLevelIndex == 5)
+        if(GameMngr.CurrentLevelIndex == 5)
         {
             if(TotalScore < 65) 
             {
@@ -148,18 +182,23 @@ public class ScoreMngr : MonoBehaviour
         {
             case 1:
                 _AudioMngr.PlayPerformance(_AudioMngr.verdict[verdict]);
+                Debug.Log("The level verdict: "+GameLevel);
                 break;
             case 2:
                 _AudioMngr.PlayPerformance(_AudioMngr.verdict2[verdict]);
+                Debug.Log("The level verdict: "+GameLevel);
                 break;
             case 3:
                 _AudioMngr.PlayPerformance(_AudioMngr.verdict3[verdict]);
+                Debug.Log("The level verdict: "+GameLevel);
                 break;
             case 4:
                 _AudioMngr.PlayPerformance(_AudioMngr.verdict4[verdict]);
+                Debug.Log("The level verdict: "+GameLevel);
                 break;
             case 5:
                 _AudioMngr.PlayPerformance(_AudioMngr.verdict5[verdict]);
+                Debug.Log("The level verdict: "+GameLevel);
                 break;
             default:
                 Debug.Log("Undefined sublevel");
