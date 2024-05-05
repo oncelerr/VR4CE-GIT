@@ -10106,6 +10106,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 468688242}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &471019274
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187027, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189,
+        type: 3}
+      propertyPath: m_Name
+      value: XR Device Simulator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
 --- !u!1001 &475380164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53132,7 +53200,7 @@ PrefabInstance:
     - target: {fileID: 7524036272996435617, guid: 06df99dd7790d2a4aa6891d185926af8,
         type: 3}
       propertyPath: m_Intensity
-      value: 263781.6
+      value: 387587.5
       objectReference: {fileID: 0}
     - target: {fileID: 7524036272996435617, guid: 06df99dd7790d2a4aa6891d185926af8,
         type: 3}
@@ -53165,7 +53233,7 @@ PrefabInstance:
     - target: {fileID: 4982554904981358312, guid: d8ea6cd59a5eae5478bd038884a93f87,
         type: 3}
       propertyPath: m_Intensity
-      value: 370.54892
+      value: 339.1266
       objectReference: {fileID: 0}
     - target: {fileID: 5029538020231890548, guid: d8ea6cd59a5eae5478bd038884a93f87,
         type: 3}
@@ -53268,7 +53336,7 @@ PrefabInstance:
     - target: {fileID: 345840053571220440, guid: 5c4b3047396a8ba47bc9656832424cd9,
         type: 3}
       propertyPath: m_Intensity
-      value: 350413.66
+      value: 201564.08
       objectReference: {fileID: 0}
     - target: {fileID: 345840053571220440, guid: 5c4b3047396a8ba47bc9656832424cd9,
         type: 3}
@@ -53416,7 +53484,7 @@ PrefabInstance:
     - target: {fileID: 739630605904587930, guid: f5cdfb41605de034d9f097e003c671d4,
         type: 3}
       propertyPath: m_Intensity
-      value: 308.7523
+      value: 404.11426
       objectReference: {fileID: 0}
     - target: {fileID: 768610824830200836, guid: f5cdfb41605de034d9f097e003c671d4,
         type: 3}
@@ -53568,7 +53636,7 @@ PrefabInstance:
     - target: {fileID: 7613582431147031972, guid: 4cac1190e412be342b7eae0d8b7ad879,
         type: 3}
       propertyPath: m_Intensity
-      value: 459.61298
+      value: 433.4457
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54221,6 +54289,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1926435551}
+  - {fileID: 471019274}
   - {fileID: 2101917217}
   - {fileID: 1750292029}
   - {fileID: 1252873346}

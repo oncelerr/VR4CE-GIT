@@ -4,6 +4,7 @@ public class TouchPanelController : MonoBehaviour
 {
     public GameObject panel; // Reference to the panel to open/close
     public GameObject hand; // Reference to the hand GameObject
+    public GameObject objectToDisable; // Reference to the object to disable
 
     private bool handTouching = false;
 
@@ -14,6 +15,8 @@ public class TouchPanelController : MonoBehaviour
             handTouching = true;
             // Open the panel
             OpenPanel();
+            // Disable the object
+            DisableObject();
         }
     }
 
@@ -24,6 +27,8 @@ public class TouchPanelController : MonoBehaviour
             handTouching = false;
             // Close the panel
             ClosePanel();
+            // Enable the object
+            EnableObject();
         }
     }
 
@@ -44,6 +49,26 @@ public class TouchPanelController : MonoBehaviour
         if (panel != null && !handTouching)
         {
             panel.SetActive(false);
+        }
+    }
+
+    private void DisableObject()
+    {
+        if (objectToDisable != null)
+        {
+            objectToDisable.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Object to disable reference is not set in TouchPanelController.");
+        }
+    }
+
+    private void EnableObject()
+    {
+        if (objectToDisable != null)
+        {
+            objectToDisable.SetActive(true);
         }
     }
 }
