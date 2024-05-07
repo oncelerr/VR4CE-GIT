@@ -68,7 +68,7 @@ public class TouchPanelController : MonoBehaviour
     {
         if (objectToDisable != null)
         {
-            objectToDisable.SetActive(true);
+            objectToDisable.SetActive(false);
         }
     }
 }
