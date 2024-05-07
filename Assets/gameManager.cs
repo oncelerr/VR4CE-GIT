@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
     public int scoring;
     public List<Image> img;
 
-    private float universalScore = 100;
+    private float universalScore = 0;
     public TextMeshProUGUI scoreText; // Reference to the UI text to display the score
+    public TextMeshProUGUI scoreText1;
     public TextMeshProUGUI scoreMessage;
 
     private float startTime;
@@ -27,9 +28,6 @@ public class GameManager : MonoBehaviour
     {
         // Calculate the time elapsed since the scene started
         float elapsedTime = Time.time - startTime;
-
-        // Multiply the universal score by the elapsed time
-        MultiplyScore(elapsedTime);
     }
 
     private void Awake()
@@ -46,13 +44,15 @@ public class GameManager : MonoBehaviour
 
     public void IncrementUniversalScore()
     {
-        universalScore = 20 + universalScore;
+        universalScore = 10 + universalScore;
+        scoreText1.SetText(universalScore.ToString());
         UpdateScoreText(); // Update the UI text
     }
 
     public void MinusUniversalScore()
     {
         universalScore = universalScore - scoring;
+        scoreText1.SetText(universalScore.ToString());
         Debug.Log(universalScore);
         UpdateScoreText(); // Update the UI text
     }
@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     // Update UI text with the current score
     private void UpdateScoreText()
     {
+        
+
         if (scoreText != null)
         {
             scoreText.text = universalScore.ToString();
@@ -101,7 +103,36 @@ public class GameManager : MonoBehaviour
 
     public void MultiplyScore(float timeElapsed)
     {
-        float universalScore1 = universalScore + timeElapsed;
-        universalScore = Mathf.FloorToInt(universalScore1 / 5);
+        // Convert time elapsed to seconds
+        float secondsElapsed = Mathf.FloorToInt(timeElapsed);
+
+        if (secondsElapsed <= 120)
+        {
+            universalScore = universalScore * 4;
+        } 
+        else if (secondsElapsed > 120 && secondsElapsed < 240)
+        {
+            universalScore = (float)(universalScore * 3.5);
+        }
+        else if (secondsElapsed > 240 && secondsElapsed < 360)
+        {
+            universalScore = universalScore * 3;
+        }
+        else if (secondsElapsed > 360 && secondsElapsed < 480)
+        {
+            universalScore = (float)(universalScore * 2.5);
+        }
+        else if (secondsElapsed > 480 && secondsElapsed < 600)
+        {
+            universalScore = universalScore * 2;
+        }
+        else if (secondsElapsed > 600 && secondsElapsed < 720)
+        {
+            universalScore = (float)(universalScore * 1.5);
+        }
+        else
+        {
+            universalScore = universalScore * 1;
+        }
     }
 }
