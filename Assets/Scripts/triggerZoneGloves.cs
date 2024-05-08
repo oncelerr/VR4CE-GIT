@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -13,24 +12,51 @@ public class triggerZoneGloves : MonoBehaviour
     private bool done = false;
     public AudioClip audioClip;
     public AudioClip audioClip1;
+    public AudioClip audioClip2;
+    public AudioClip audioClip3;
     public PlayableDirector timeline;
+    bool stepZeroPlayed = true;
+    bool stepOnePlayed = true;
 
     private void OnTriggerEnter(Collider other)
     {
+        var otherScript = timeline.GetComponent<PlaySteps>();
+
+        if (otherScript != null)
+        {
+            stepZeroPlayed = otherScript.steps[0].hasPlayed;
+            stepOnePlayed = otherScript.steps[1].hasPlayed;
+        }
+
+        Debug.Log(other.gameObject.tag);
+
         if (other.gameObject.CompareTag(targetTag) && !done)
         {
             OnEnterEvent.Invoke(other.gameObject);
             done = true;
-        } else
+        }
+        else
         {
-            if (!other.gameObject.CompareTag("Untagged") && !other.gameObject.CompareTag("Human") && timeline.state == PlayState.Paused && other.gameObject.CompareTag("gloveLeft"))
+            if (!stepZeroPlayed)
             {
-                AudioSource.PlayClipAtPoint(audioClip1, new Vector3(9.36299992f, 1.10899997f, -0.841000021f));
+                stepOnePlayed = true;
+
+                if (other.gameObject.CompareTag("labcoat"))
+                {
+                    AudioSource.PlayClipAtPoint(audioClip, transform.position);
+                }
+                if (other.gameObject.CompareTag("goggles"))
+                {
+                    AudioSource.PlayClipAtPoint(audioClip, transform.position);
+                }
             }
-            else if (!other.gameObject.CompareTag("Untagged") && !other.gameObject.CompareTag("Human") && timeline.state == PlayState.Paused)
+            if (!stepOnePlayed)
             {
-                AudioSource.PlayClipAtPoint(audioClip, new Vector3(9.36299992f, 1.10899997f, -0.841000021f));
-            } 
+                if (other.gameObject.CompareTag("goggles"))
+                {
+                    AudioSource.PlayClipAtPoint(audioClip3, transform.position);
+                }
+            }
         }
     }
 

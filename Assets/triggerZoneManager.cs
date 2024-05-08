@@ -13,6 +13,8 @@ public class triggerZoneManager : MonoBehaviour
     public rightPlateTrigger rightPlateTriggerScript;
     public leftPlateTrigger leftPlateTriggerScript;
     public PlaySteps playStepsScript;
+    public AudioClip audioClip;
+    public AudioClip audioClip1;
 
     private bool isMoving = false;
     private float duration = 0.5f;
@@ -134,11 +136,13 @@ public class triggerZoneManager : MonoBehaviour
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip1, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight == 36 && leftPlateTriggerScript.leftPlateWeight == 36)
         {
@@ -154,7 +158,6 @@ public class triggerZoneManager : MonoBehaviour
         Debug.Log(rightPlateTriggerScript.rightPlateWeight);
         Debug.Log(leftPlateTriggerScript.leftPlateWeight);
     }
-
     public void fifthQuestion()
     {
         GameObject sphere1 = GameObject.FindGameObjectWithTag("sphere1");
@@ -169,11 +172,13 @@ public class triggerZoneManager : MonoBehaviour
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip1, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight == 23 && leftPlateTriggerScript.leftPlateWeight == 23)
         {
@@ -203,11 +208,13 @@ public class triggerZoneManager : MonoBehaviour
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip1, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight == 28 && leftPlateTriggerScript.leftPlateWeight == 28)
         {
@@ -237,11 +244,13 @@ public class triggerZoneManager : MonoBehaviour
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip1, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight == 58 && leftPlateTriggerScript.leftPlateWeight == 58)
         {
@@ -271,11 +280,13 @@ public class triggerZoneManager : MonoBehaviour
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip1, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight == 35 && leftPlateTriggerScript.leftPlateWeight == 35)
         {
@@ -305,11 +316,13 @@ public class triggerZoneManager : MonoBehaviour
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.331f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.427f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight > leftPlateTriggerScript.leftPlateWeight)
         {
             StartCoroutine(MoveObjectSmoothly(sphere1, sphere1.transform.position, new Vector3(3.25300002f, 1.427f, -5.216f)));
             StartCoroutine(MoveObjectSmoothly(sphere2, sphere2.transform.position, new Vector3(2.753f, 1.331f, -5.216f)));
+            AudioSource.PlayClipAtPoint(audioClip1, transform.position);
         }
         if (rightPlateTriggerScript.rightPlateWeight == 52 && leftPlateTriggerScript.leftPlateWeight == 52)
         {
